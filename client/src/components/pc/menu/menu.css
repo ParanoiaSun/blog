@@ -12,12 +12,41 @@
 
 .menu-item {
     writing-mode: vertical-lr;
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-item p{
+    z-index: 1000;
 }
 
 .menu-item a {
     color: #fff;
 }
 
-.menu-item a:hover {
-    color: #ddd;
+.menu-item a:hover:before, .menu-item a:active:before, .menu-item a:focus:before {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-width: 0.2rem;
+}
+
+.menu-item :before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -0.6rem;
+    left: 0.5rem;
+    border-width: 0;
+    background: transparent;
+    border-color: #EE3E24;
+    border-style: solid;
+    border-radius: 100%;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    transition-property: width, height;
+    -moz-transition-property: width, height; /* Firefox 4 */
+    -webkit-transition-property: width, height; /* Safari 和 Chrome */
+    -o-transition-property: width, height; /* Opera */
+    z-index: -1;
 }
