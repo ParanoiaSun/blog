@@ -2,10 +2,22 @@
 .menu-wrapper {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 10rem;
+    background-color: #18191B;
+    padding: 1.5rem 2.5rem;
+    float: right;
 }
 
 .menu-item {
+    writing-mode: vertical-lr;
+}
 
+.menu-item a {
+    color: #fff;
+}
+
+.menu-item a:hover {
+    color: #ddd;
 }

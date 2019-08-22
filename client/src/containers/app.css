@@ -1,0 +1,7 @@
+
+.pc-content-wrapper {
+    margin: 0 3rem;
+    background-color: #DFDFDF;
+    min-height: 100vh;
+    flex-direction: column;
+}
