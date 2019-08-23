@@ -4,20 +4,23 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 10rem;
+    width: 12rem;
+    height: 3rem;
     background-color: #18191B;
     padding: 1.5rem 2.5rem;
+    margin-top: 5rem;
     float: right;
+    -moz-box-shadow: -2px 3px 3px #aaaaaa; /* old version Firefox */
+    box-shadow: -2px 3px 3px #aaaaaa;
 }
 
 .menu-item {
     writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
     position: relative;
     z-index: 1000;
-}
-
-.menu-item p{
-    z-index: 1000;
+    font-size: 1rem;
 }
 
 .menu-item a {
@@ -39,7 +42,7 @@
     left: 0.5rem;
     border-width: 0;
     background: transparent;
-    border-color: #EE3E24;
+    border-color: #e94328;
     border-style: solid;
     border-radius: 100%;
     -webkit-transition-duration: 0.4s;
@@ -48,5 +51,33 @@
     -moz-transition-property: width, height; /* Firefox 4 */
     -webkit-transition-property: width, height; /* Safari 和 Chrome */
     -o-transition-property: width, height; /* Opera */
+    z-index: -1;
+}
+
+.menu-item-active {
+    writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    position: relative;
+    z-index: 1000;
+    font-size: 1rem;
+}
+
+.menu-item-active a {
+    color: #fff;
+}
+
+.menu-item-active:before {
+    content: "";
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-width: 0.2rem;
+    top: -0.6rem;
+    left: 0.5rem;
+    background: transparent;
+    border-color: #EE3E24;
+    border-style: solid;
+    border-radius: 100%;
     z-index: -1;
 }

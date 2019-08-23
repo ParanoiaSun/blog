@@ -1,0 +1,8 @@
+.pc-detail-page {
+    padding: 6rem 4rem 0 4rem;
+    min-height: calc(100vh - 13rem);
+}
+
+.pc-homepage-wrapper {
+    min-height: calc(100vh - 7rem);
+}
