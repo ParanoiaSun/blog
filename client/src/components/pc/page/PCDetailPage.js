@@ -3,7 +3,7 @@ import PCHeader from "../header/PCHeader";
 import './page.css';
 
 import MediaQuery from "react-responsive";
-import {Route} from "react-router";
+import {Route, Switch} from "react-router-dom";
 import PCAlbums from "../albums/PCAlbums";
 import PCMessages from "../messages/PCMessages";
 import PCAbout from "../about/PCAbout";
@@ -12,23 +12,18 @@ import PCFooter from "../footer/PCFooter";
 
 class PCDetailPage extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
     render() {
         return(
             <Fragment>
                 <div className="pc-detail-page">
                     <PCHeader />
                     <MediaQuery query='(min-device-width: 1224px)'>
-                        <Route path="/articles" component={PCArticlePage}/>
-                        <Route path="/albums" component={PCAlbums}/>
-                        <Route path="/messages" component={PCMessages}/>
-                        <Route path="/about" component={PCAbout}/>
+                        <Switch>
+                            <Route path="/articles" component={PCArticlePage}/>
+                            <Route path="/albums" component={PCAlbums}/>
+                            <Route path="/messages" component={PCMessages}/>
+                            <Route path="/about" component={PCAbout}/>
+                        </Switch>
                     </MediaQuery>
                 </div>
                 <PCFooter />

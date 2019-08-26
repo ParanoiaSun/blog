@@ -1,0 +1,34 @@
+.pc-about-wrapper {
+    font-size: 1rem;
+    margin: 2rem 1rem;
+    position: relative;
+    min-height: 45rem;
+    min-width: 65rem;
+}
+
+.self-img {
+    position: absolute;
+    width: 30rem;
+    height: 40rem;
+    background-color: #777777;
+    z-index: 1;
+}
+
+.self-intro-wrapper {
+    position: absolute;
+    top: 5rem;
+    left: 26rem;
+    width: 40rem;
+    height: 40rem;
+    background-color: #FFFFFF;
+    z-index: 2;
+    padding: 2rem 5rem;
+}
+
+.self-intro {
+    font-size: 1.2rem;
+}
+
+.self-intro-name {
+    font-size: 1.5rem;
+}

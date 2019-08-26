@@ -6,3 +6,7 @@
 .pc-homepage-wrapper {
     min-height: calc(100vh - 7rem);
 }
+
+.pc-homepage-content {
+    min-height: 40rem;
+}

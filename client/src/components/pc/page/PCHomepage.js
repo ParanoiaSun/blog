@@ -6,7 +6,9 @@ class PCHomepage extends React.Component {
         return(
             <Fragment>
                 <div className="pc-homepage-wrapper">
-                    PC Home!
+                    <div className="pc-homepage-content">
+                        PC Home!
+                    </div>
                 </div>
                 <PCFooter />
             </Fragment>

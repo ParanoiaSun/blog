@@ -1,8 +1,6 @@
 import React from 'react';
 import './article.css';
 
-import PCHeader from "../header/PCHeader";
-
 class PCArticle extends React.Component {
     render() {
         return (

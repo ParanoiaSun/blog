@@ -2,7 +2,7 @@ import React from 'react';
 import '../app.css';
 
 import PCMenu from "../../components/pc/menu/PCMenu";
-import {Route, Switch} from "react-router";
+import {Route, Switch} from "react-router-dom";
 import MediaQuery from 'react-responsive';
 import MobileArticles from "../../components/mobile/articles/MobileArticles";
 import MobileAlbums from "../../components/mobile/albums/MobileAlbums";
@@ -12,10 +12,28 @@ import PCHomepage from "../../components/pc/page/PCHomepage";
 import PCDetailPage from "../../components/pc/page/PCDetailPage";
 
 class PCApp extends React.Component {
+
+    componentDidMount() {
+        this.updatePath(this.props);
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        this.updatePath(nextProps);
+        return true;
+    }
+
+    onMenuRef = (ref) => {
+        this.menu = ref
+    };
+
+    updatePath = (props) => {
+        this.menu.handleRouteChange(props.location.pathname);
+    };
+
     render() {
         return (
             <div className="pc-content-wrapper">
-                <PCMenu />
+                <PCMenu onMenuRef={this.onMenuRef}/>
                 <div className="pc-content">
                     <MediaQuery query='(min-device-width: 1224px)'>
                         <Switch>
