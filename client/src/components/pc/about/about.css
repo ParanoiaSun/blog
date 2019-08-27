@@ -1,6 +1,6 @@
 .pc-about-wrapper {
     font-size: 1rem;
-    margin: 2rem 1rem;
+    margin: 10rem 10rem;
     position: relative;
     min-height: 45rem;
     min-width: 65rem;
@@ -10,8 +10,13 @@
     position: absolute;
     width: 30rem;
     height: 40rem;
-    background-color: #777777;
+    background-color: #aaaaaa;
     z-index: 1;
+    opacity: 1;
+    animation: appear 1s;
+    -moz-animation: appear 1s;	/* Firefox 4 */
+    -webkit-animation: appear 1s;	/* Safari 和 Chrome */
+    -o-animation: appear 1s;	/* Opera */
 }
 
 .self-intro-wrapper {
@@ -23,6 +28,11 @@
     background-color: #FFFFFF;
     z-index: 2;
     padding: 2rem 5rem;
+    opacity: 1;
+    animation: appear2 1s;
+    -moz-animation: appear2 1s;	/* Firefox 4 */
+    -webkit-animation: appear2 1s;	/* Safari 和 Chrome */
+    -o-animation: appear2 1s;	/* Opera */
 }
 
 .self-intro {
@@ -31,4 +41,44 @@
 
 .self-intro-name {
     font-size: 1.5rem;
+}
+
+@keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-moz-keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-webkit-keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-o-keyframes appear {
+    from { opacity: 0.5; top: 3rem; }
+    to { opacity: 1; top: 5rem; }
+}
+
+@keyframes appear2 {
+    from { opacity: 0.5; top: 3rem; }
+    to { opacity: 1; top: 5rem; }
+}
+
+@-moz-keyframes appear2 {
+    from { opacity: 0.5; top: 3rem; }
+    to { opacity: 1; top: 5rem; }
+}
+
+@-webkit-keyframes appear2 {
+    from { opacity: 0.5; top: 3rem; }
+    to { opacity: 1; top: 5rem; }
+}
+
+@-o-keyframes appear2 {
+    from { opacity: 0.5; top: 3rem; }
+    to { opacity: 1; top: 5rem; }
 }

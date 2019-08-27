@@ -1,6 +1,7 @@
 .pc-footer-wrapper {
     height: 7rem;
     width: 100%;
+    min-width: 30rem;
 }
 
 .pc-footer-wrapper hr{
@@ -16,4 +17,5 @@
     padding-top: 2rem;
     color: #CCCCCC;
     font-size: 0.85rem;
+    margin-left: 8rem;
 }

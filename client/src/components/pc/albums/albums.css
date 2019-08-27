@@ -1,0 +1,44 @@
+.albums-cover-wrapper {
+    margin: 8rem 0 0 0;
+    background-color: #777777;
+    width: 100%;
+    padding: 3rem 0;
+
+    display: -webkit-box;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling:touch;
+    scroll-behavior:smooth;
+    /*position: absolute;*/
+}
+
+.albums-cover {
+    height: 25rem;
+    width: 20rem;
+    background-color: #FFFFFF;
+    margin: 0 2rem 0 2rem;
+    opacity: 1;
+    animation: appear 1s;
+    -moz-animation: appear 1s;	/* Firefox 4 */
+    -webkit-animation: appear 1s;	/* Safari 和 Chrome */
+    -o-animation: appear 1s;	/* Opera */
+}
+
+@keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-moz-keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-webkit-keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
+
+@-o-keyframes appear {
+    from { opacity: 0; top: -2rem; }
+    to { opacity: 1; top: 0; }
+}
