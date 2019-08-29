@@ -8,10 +8,11 @@
     height: 3rem;
     background-color: #18191B;
     padding: 1.5rem 2.5rem;
-    margin: 6rem 5rem 0 0;
-    float: right;
-    -moz-box-shadow: -2px 3px 3px #aaaaaa; /* old version Firefox */
-    box-shadow: -2px 3px 3px #aaaaaa;
+    -moz-box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.5); /* old version Firefox */
+    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 6rem;
+    right: 5rem;
 }
 
 .menu-item {

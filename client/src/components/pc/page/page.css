@@ -1,11 +1,34 @@
 .pc-detail-page {
-    min-height: calc(100vh - 7rem);
+    min-height: calc(100vh - 7.5rem);
+}
+
+.pc-homepage {
+    min-width: 90rem;
+    position: relative;
 }
 
 .pc-homepage-wrapper {
-    min-height: calc(100vh - 7rem);
+    min-height: calc(100vh - 7.5rem);
+    width: 40vw;
 }
 
 .pc-homepage-content {
     min-height: 40rem;
+}
+
+.footer-area {
+    width: 42rem;
+}
+
+.pc-homepage-cover {
+    position: absolute;
+    width: 30rem;
+    height: calc(100vh - 3.5rem);
+    min-height: 42rem;
+    top: 3.5rem;
+    right: 10rem;
+    background-image: url("https://img.zcool.cn/community/01256d5b2b6636a8012034f7304bde.jpg@1280w_1l_2o_100sh.jpg");
+    background-size: cover;
+    background-color: #DDDDDD;
+    z-index: -1;
 }

@@ -1,7 +1,5 @@
 
 .pc-content-wrapper {
-    margin-bottom: -3rem;
-    /*background-color: #EEE;*/
     min-height: 100vh;
     min-width: 50rem;
     flex-direction: column;

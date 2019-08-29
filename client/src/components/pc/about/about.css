@@ -1,6 +1,6 @@
 .pc-about-wrapper {
     font-size: 1rem;
-    margin: 10rem 10rem;
+    margin: 4rem 10rem 10rem 10rem;
     position: relative;
     min-height: 45rem;
     min-width: 65rem;
@@ -23,7 +23,7 @@
     position: absolute;
     top: 5rem;
     left: 26rem;
-    width: 40rem;
+    width: 30rem;
     height: 40rem;
     background-color: #FFFFFF;
     z-index: 2;
@@ -44,41 +44,41 @@
 }
 
 @keyframes appear {
-    from { opacity: 0; top: -2rem; }
+    from { opacity: 0; top: -1.5rem; }
     to { opacity: 1; top: 0; }
 }
 
 @-moz-keyframes appear {
-    from { opacity: 0; top: -2rem; }
+    from { opacity: 0; top: -1.5rem; }
     to { opacity: 1; top: 0; }
 }
 
 @-webkit-keyframes appear {
-    from { opacity: 0; top: -2rem; }
+    from { opacity: 0; top: -1.5rem; }
     to { opacity: 1; top: 0; }
 }
 
 @-o-keyframes appear {
-    from { opacity: 0.5; top: 3rem; }
+    from { opacity: 0.5; top: 3.5rem; }
     to { opacity: 1; top: 5rem; }
 }
 
 @keyframes appear2 {
-    from { opacity: 0.5; top: 3rem; }
+    from { opacity: 0.5; top: 3.5rem; }
     to { opacity: 1; top: 5rem; }
 }
 
 @-moz-keyframes appear2 {
-    from { opacity: 0.5; top: 3rem; }
+    from { opacity: 0.5; top: 3.5rem; }
     to { opacity: 1; top: 5rem; }
 }
 
 @-webkit-keyframes appear2 {
-    from { opacity: 0.5; top: 3rem; }
+    from { opacity: 0.5; top: 3.5rem; }
     to { opacity: 1; top: 5rem; }
 }
 
 @-o-keyframes appear2 {
-    from { opacity: 0.5; top: 3rem; }
+    from { opacity: 0.5; top: 3.5rem; }
     to { opacity: 1; top: 5rem; }
 }

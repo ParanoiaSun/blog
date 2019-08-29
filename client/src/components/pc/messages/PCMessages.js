@@ -1,4 +1,5 @@
 import React from 'react';
+import './messages.css';
 
 class PCMessages extends React.Component {
     render() {

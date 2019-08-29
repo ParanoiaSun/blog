@@ -5,6 +5,10 @@ body, html {
     min-height: 100%;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 a {
     text-decoration: none;
 }
