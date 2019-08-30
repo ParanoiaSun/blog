@@ -51,6 +51,13 @@
 }
 
 .pc-article-detail-button {
-    color: #e94328;
     margin-top: 1rem;
+}
+
+.pc-article-detail-button a {
+    color: #e94328;
+}
+
+.pc-article-detail-button a:hover {
+    color: #B12610;
 }

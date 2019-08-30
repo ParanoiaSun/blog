@@ -13,7 +13,28 @@
 }
 
 .pc-homepage-content {
-    min-height: 40rem;
+    position: absolute;
+    top: 20rem;
+    left: 10rem;
+    height: 20rem;
+    width: 30rem;
+    animation: appear4 2s;
+    -moz-animation: appear4 2s;
+    -webkit-animation: appear4 2s;
+    -o-animation: appear3 4s;
+}
+
+.pc-homepage-content-logo {
+    width: 12rem;
+    height: 12rem;
+    background-image: url("../../blog-logo.png");
+    background-size: cover;
+}
+
+.pc-homepage-content-intro {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    color: #777777;
 }
 
 .footer-area {
@@ -31,4 +52,48 @@
     background-size: cover;
     background-color: #DDDDDD;
     z-index: -1;
+    animation: appear3 2s;
+    -moz-animation: appear3 2s;
+    -webkit-animation: appear3 2s;
+    -o-animation: appear3 2s;
+}
+
+@keyframes appear3 {
+    from { opacity: 0; right: 9rem; }
+    to { opacity: 1; right: 10rem; }
+}
+
+@-moz-keyframes appear3 {
+    from { opacity: 0; right: 9rem; }
+    to { opacity: 1; right: 10rem; }
+}
+
+@-webkit-keyframes appear3 {
+    from { opacity: 0; right: 9rem; }
+    to { opacity: 1; right: 10rem; }
+}
+
+@-o-keyframes appear3 {
+    from { opacity: 0; left: 9rem; }
+    to { opacity: 1; left: 10rem; }
+}
+
+@keyframes appear4 {
+    from { opacity: 0; left: 9rem; }
+    to { opacity: 1; left: 10rem; }
+}
+
+@-moz-keyframes appear4 {
+    from { opacity: 0; left: 9rem; }
+    to { opacity: 1; left: 10rem; }
+}
+
+@-webkit-keyframes appear4 {
+    from { opacity: 0; left: 9rem; }
+    to { opacity: 1; left: 10rem; }
+}
+
+@-o-keyframes appear4 {
+    from { opacity: 0; left: 9rem; }
+    to { opacity: 1; left: 10rem; }
 }

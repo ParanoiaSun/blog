@@ -1,6 +1,8 @@
 import React from 'react';
 import './article.css';
 
+import {Link} from 'react-router-dom';
+
 class PCArticle extends React.Component {
 
     constructor(props) {
@@ -22,7 +24,7 @@ class PCArticle extends React.Component {
                     { this.state.article.summary }
                 </div>
                 <div className="pc-article-detail-button">
-                    阅读全文
+                    <Link to={"/articles/" + this.state.article.id}> 阅读全文 </Link>
                 </div>
             </div>
         );

@@ -26,19 +26,29 @@ class PCMenu extends React.Component {
         return (
           <div className="menu-wrapper">
               <div className={this.state.pathname === '/homepage' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/homepage" >首 页</Link>
+                  <Link to="/homepage" >
+                      <div className="menu-item-img menu-item-img-homepage" />
+                  </Link>
               </div>
-              <div className={this.state.pathname === '/articles' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/articles" >博 文</Link>
+              <div className={this.state.pathname !== undefined && this.state.pathname.startsWith('/articles') ? 'menu-item-active' : 'menu-item'}>
+                  <Link to="/articles" >
+                      <div className="menu-item-img menu-item-img-articles" />
+                  </Link>
               </div>
-              <div className={this.state.pathname === '/albums' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/albums" >相 册</Link>
+              <div className={this.state.pathname !== undefined && this.state.pathname.startsWith('/albums') ? 'menu-item-active' : 'menu-item'}>
+                  <Link to="/albums" >
+                      <div className="menu-item-img menu-item-img-albums" />
+                  </Link>
               </div>
               <div className={this.state.pathname === '/messages' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/messages" >留 言</Link>
+                  <Link to="/messages" >
+                      <div className="menu-item-img menu-item-img-messages" />
+                  </Link>
               </div>
               <div className={this.state.pathname === '/about' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/about" >关 于</Link>
+                  <Link to="/about" >
+                      <div className="menu-item-img menu-item-img-about" />
+                  </Link>
               </div>
           </div>
         );
