@@ -24,7 +24,7 @@ class PCArticle extends React.Component {
                     { this.state.article.summary }
                 </div>
                 <div className="pc-article-detail-button">
-                    <Link to={"/articles/" + this.state.article.id}> 阅读全文 </Link>
+                    <Link to={"/articles/detail/" + this.state.article.id}> 阅读全文 </Link>
                 </div>
             </div>
         );

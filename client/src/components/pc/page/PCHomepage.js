@@ -21,7 +21,7 @@ class PCHomepage extends React.Component {
                     <div className="pc-homepage-content">
                         <div className="pc-homepage-content-logo" />
                         <div className="pc-homepage-content-intro">
-                            ▶ 和世界交手这许多年，你是否光彩依旧，兴致盎然。
+                            ▶&nbsp;&nbsp;&nbsp;和世界交手这许多年，你是否光彩依旧，兴致盎然。
                         </div>
                     </div>
                 </div>
