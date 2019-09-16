@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jquery": "^3.4.1",
+    "marked": "^0.7.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-markdown": "^4.2.2",
     "react-responsive": "^7.0.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
