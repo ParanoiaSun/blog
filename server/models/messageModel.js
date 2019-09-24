@@ -7,10 +7,12 @@ const messageSchema = new Schema({
         type: String
     },
     send_time: {
+        require: true,
         type: Date,
         default: Date.now()
     },
     is_deleted: {
+        require: true,
         type: Number,
         default: 0
     },
