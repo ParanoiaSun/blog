@@ -48,7 +48,7 @@ class PCArticlePage extends React.Component {
             <div className="pc-articles-page">
                 <div className="pc-articles-wrapper">
                     {this.state.articles.map((item, key) => {
-                        return <PCArticle article={ item } key={ key }/>
+                        return <PCArticle article={ item } index={key} key={ key }/>
                     })}
                 </div>
             </div>

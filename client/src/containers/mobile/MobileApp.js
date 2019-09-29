@@ -14,7 +14,9 @@ class MobileApp extends React.Component {
     render() {
         return (
           <div>
-              hello, mobile
+              <p>sorry ~ 移动端界面还在开发中哦</p>
+              <p>请移步PC端浏览器 ^_^</p>
+              <p>开发日志：</p>
               <MediaQuery query='(min-device-width: 1224px)'>
                   <Route path="/articles" component={PCArticles}/>
                   <Route path="/albums" component={PCAlbums}/>

@@ -8,6 +8,7 @@
     width: 60vw;
     min-width: 35rem;
     margin: 5rem 0;
+    opacity: 0;
     animation: appear-article 1s;
     -moz-animation: appear-article 1s;
     -webkit-animation: appear-article 1s;
@@ -16,6 +17,7 @@
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .pc-article:hover {
@@ -58,7 +60,7 @@
     font-size: 0.9rem;
 }
 
-#pc-article-split-line {
+.pc-article-split-line {
     width: 2.5rem;
     height: 0.1rem;
     background-color: #18191B;

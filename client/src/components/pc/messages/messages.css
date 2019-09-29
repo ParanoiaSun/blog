@@ -1,3 +1,162 @@
 .pc-messages-wrapper {
     padding: 2rem 8rem;
 }
+
+.pc-messages-intro {
+    /*background-color: #ddd;*/
+    width: 50vw;
+    min-width: 45rem;
+    margin: 3rem 3rem 0 3rem;
+    animation: messageTopIn 1s;
+}
+
+.pc-messages-intro-total {
+    font-size: 1.1rem;
+    margin: 2rem 0 0.5rem 0;
+    color: #444444;
+}
+
+/* message detail */
+.pc-message-detail-wrapper {
+    border-top: 1px solid #aaaaaa;
+    width: 50vw;
+    min-width: 45rem;
+    margin: 0 3rem 2rem 3rem;
+    padding: 0.5rem 0 1.5rem 0;
+    opacity: 0;
+    animation: messageTopIn 1s;
+    animation-fill-mode: forwards;
+}
+
+.pc-message-detail-title {
+    margin: 1rem 0;
+}
+
+.pc-message-detail-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    width: 5rem;
+}
+
+.pc-message-detail-time {
+    display: inline-block;
+    float: right;
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.pc-message-detail-content {
+    font-size: 1rem;
+    color: #444444;
+    margin-bottom: 1rem;
+}
+
+.pc-message-detail-reply {
+    color: #ffffff;
+    background-color: #18191B;
+    font-size: 0.8rem;
+    width: 3.5rem;
+    height: 1.2rem;
+    text-align: center;
+    padding: 0.5rem 0;
+    float: right;
+}
+
+.pc-message-detail-reply:hover {
+    cursor: pointer;
+    background-color: #555555;
+}
+
+@keyframes messageTopIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* sub message detail */
+.pc-sub-message-detail-wrapper {
+    width: calc(50vw - 3rem);
+    min-width: 42rem;
+    margin: 4.5rem 3rem -2rem 3rem;
+}
+
+.pc-sub-message-detail-content {
+    border-top: 1px solid #aaaaaa;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+/* send messages */
+.pc-messages-intro .nampo-icon{
+    color: #e94328;
+    font-size: 1.2rem;
+}
+
+.pc-messages-send-name-input {
+    margin: 1rem 0;
+}
+
+.pc-messages-send-wrapper {
+    margin: 1em 0 4rem 0;
+}
+
+.pc-messages-send-wrapper input {
+    border: 2px solid transparent;
+    border-radius: 2px;
+    background-color: #eaeaea;
+    padding: 8px 15px;
+    width: 15rem;
+    font-size: 0.9rem;
+}
+
+.pc-messages-send-wrapper input:focus {
+    border: 2px solid #18191B;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.pc-messages-send-wrapper textarea {
+    border: 2px solid transparent;
+    border-radius: 2px;
+    background-color: #eaeaea;
+    padding: 8px 15px;
+    width: calc(50vw - 2rem);
+    min-width: 42rem;
+    font-size: 0.9rem;
+}
+
+.pc-messages-send-wrapper textarea:focus {
+    border: 2px solid #18191B;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.pc-messages-send-button {
+    color: #ffffff;
+    background-color: #18191B;
+    font-size: 0.8rem;
+    width: 3.5rem;
+    height: 1.2rem;
+    text-align: center;
+    padding: 0.5rem 0;
+    float: right;
+    margin-top: 0.5rem;
+}
+
+.pc-messages-send-button:hover {
+    cursor: pointer;
+    background-color: #555555;
+}
+
+
+
+
+
+
+
+

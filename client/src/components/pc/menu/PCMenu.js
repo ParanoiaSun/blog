@@ -40,14 +40,14 @@ class PCMenu extends React.Component {
                       <div className="menu-item-img menu-item-img-albums" />
                   </Link>
               </div>
-              <div className={this.state.pathname === '/messages' ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/messages" >
-                      <div className="menu-item-img menu-item-img-messages" />
-                  </Link>
-              </div>
               <div className={this.state.pathname === '/about' ? 'menu-item-active' : 'menu-item'}>
                   <Link to="/about" >
                       <div className="menu-item-img menu-item-img-about" />
+                  </Link>
+              </div>
+              <div className={this.state.pathname === '/messages' ? 'menu-item-active' : 'menu-item'}>
+                  <Link to="/messages" >
+                      <div className="menu-item-img menu-item-img-messages" />
                   </Link>
               </div>
           </div>

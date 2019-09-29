@@ -8,14 +8,15 @@ class PCArticle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            article: props.article
+            article: props.article,
+            index: props.index
         }
     }
 
     render() {
         return (
-            <div id={ "pc-article-" + this.state.article.id } className="pc-article">
-                <div id="pc-article-split-line"/>
+            <div style={{ animationDelay: (300 * this.state.index) + 'ms' }} id={ "pc-article-" + this.state.article.id } className="pc-article">
+                <div className="pc-article-split-line"/>
                 <div className="pc-article-summary">
                     <div className="pc-article-title">{ this.state.article.title }</div>
                     <div className="pc-article-time">{ this.state.article.date }</div>

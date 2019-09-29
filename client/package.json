@@ -11,13 +11,17 @@
     "react-responsive": "^7.0.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "clean-css": ">=4.1.11",
+    "eslint-utils": ">=1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +40,6 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
-  }
+  },
+  "homepage": "https://paranoiasun.github.io/blog/"
 }
