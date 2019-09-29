@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './albums.css';
+import {Link} from "react-router-dom";
 
 
 class PCAlbums extends React.Component {
@@ -48,20 +49,20 @@ class PCAlbums extends React.Component {
                     {this.state.albums.map((item, key) => {
                         return <div id={ "albums-cover-" + item.id } key={ key } className="albums-cover">
                                 {key % 2 === 0 ?
-                                    <Fragment>
+                                    <Link to={ 'content/' + item.id }>
                                         <div style={{ backgroundImage: "url(" + item.img + ")" }} className="albums-cover-img">
                                         </div>
                                         <div className="albums-cover-name">
                                             { item.name }
                                         </div>
-                                    </Fragment> :
-                                    <Fragment>
+                                    </Link> :
+                                    <Link to={ 'content/' + item.id }>
                                         <div className="albums-cover-name">
                                             { item.name }
                                         </div>
                                         <div style={{ backgroundImage: "url(" + item.img + ")" }} className="albums-cover-img">
                                         </div>
-                                    </Fragment>
+                                    </Link>
                                 }
                         </div>
                     })}

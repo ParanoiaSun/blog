@@ -1,14 +1,17 @@
 .albums-cover-wrapper {
     margin: 2rem 0 0 0;
-    /*background-color: #777777;*/
     width: 100%;
     padding: 2rem 0 0 1rem;
-
     display: -webkit-box;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
     scroll-behavior:smooth;
     position: absolute;
+}
+
+.albums-cover-wrapper a {
+    text-decoration: none;
+    color: #18191b;
 }
 
 .albums-cover {
@@ -18,10 +21,10 @@
     margin: 0 1rem;
     padding: 1rem 0;
     opacity: 1;
-    animation: appear 1s;
-    -moz-animation: appear 1s;	/* Firefox 4 */
-    -webkit-animation: appear 1s;	/* Safari 和 Chrome */
-    -o-animation: appear 1s;	/* Opera */
+    animation: albumTopIn 1s;
+    -moz-animation: albumTopIn 1s;	/* Firefox 4 */
+    -webkit-animation: albumTopIn 1s;	/* Safari 和 Chrome */
+    -o-animation: albumTopIn 1s;	/* Opera */
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -56,22 +59,91 @@
     border-right: 0.1rem solid;
 }
 
-@keyframes appear {
-    from { opacity: 0; top: -1rem; }
-    to { opacity: 1; top: 0; }
+@keyframes albumTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@-moz-keyframes appear {
-    from { opacity: 0; top: -1rem; }
-    to { opacity: 1; top: 0; }
+@-moz-keyframes albumTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@-webkit-keyframes appear {
-    from { opacity: 0; top: -1rem; }
-    to { opacity: 1; top: 0; }
+@-webkit-keyframes albumTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@-o-keyframes appear {
-    from { opacity: 0; top: -1rem; }
-    to { opacity: 1; top: 0; }
+@-o-keyframes albumTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+
+/* album content */
+
+.pc-album-detail {
+    margin: 3rem 4rem 0 8rem;
+    font-size: 1rem;
+}
+
+.pc-album-detail-back-link a {
+    color: #777777;
+    text-decoration: none;
+}
+
+.pc-album-detail-back-link a:hover{
+    color: #4e4e4e;
+}
+
+.pc-album-photos-wrapper {
+    margin: 2rem 0;
+}
+
+.pc-album-photo {
+    display: inline-block;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* old version Firefox */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    animation: albumTopIn 1s;
+    -moz-animation: albumTopIn 1s;
+    -webkit-animation: albumTopIn 1s;
+    -o-animation: albumTopIn 1s;
+    /*animation-fill-mode: forwards;*/
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+.pc-album-photo img {
+    width: 17rem;
+}
+
+.pc-album-photo:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

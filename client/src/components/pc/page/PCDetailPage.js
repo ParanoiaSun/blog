@@ -10,6 +10,7 @@ import PCAbout from "../about/PCAbout";
 import PCArticlePage from "../articles/PCArticlePage";
 import PCArticleDetail from "../articles/PCArticleDetail";
 import PCFooter from "../footer/PCFooter";
+import PCAlbumContent from "../albums/PCAlbumContent";
 
 class PCDetailPage extends React.Component {
 
@@ -21,8 +22,9 @@ class PCDetailPage extends React.Component {
                     <MediaQuery query='(min-device-width: 1224px)'>
                         <Switch>
                             <Route path="/articles/list" component={PCArticlePage}/>
-                            <Route path="/articles/detail/:id" component={PCArticleDetail}/>
-                            <Route path="/albums" component={PCAlbums}/>
+                            <Route path="/articles/content/:id" component={PCArticleDetail}/>
+                            <Route path="/albums/list" component={PCAlbums}/>
+                            <Route path="/albums/content/:id" component={PCAlbumContent}/>
                             <Route path="/messages" component={PCMessages}/>
                             <Route path="/about" component={PCAbout}/>
                         </Switch>

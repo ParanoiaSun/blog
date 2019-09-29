@@ -2,6 +2,10 @@
     min-height: calc(100vh - 7.5rem);
 }
 
+.nampo-icon {
+    font-family: "iconfont" !important;
+}
+
 .pc-homepage {
     min-width: 90rem;
     position: relative;

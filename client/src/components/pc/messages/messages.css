@@ -25,6 +25,9 @@
     padding: 0.5rem 0 1.5rem 0;
     opacity: 0;
     animation: messageTopIn 1s;
+    -moz-animation: messageTopIn 1s;
+    -webkit-animation: messageTopIn 1s;
+    -o-animation: messageTopIn 1s;
     animation-fill-mode: forwards;
 }
 

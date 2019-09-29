@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.23.4",
+    "clean-css": ">=4.1.11",
+    "eslint-utils": ">=1.4.1",
     "jquery": "^3.4.1",
     "marked": "^0.7.0",
     "react": "^16.9.0",
@@ -11,9 +14,7 @@
     "react-responsive": "^7.0.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "clean-css": ">=4.1.11",
-    "eslint-utils": ">=1.4.1"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

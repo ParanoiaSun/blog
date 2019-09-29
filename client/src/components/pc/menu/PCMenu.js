@@ -36,7 +36,7 @@ class PCMenu extends React.Component {
                   </Link>
               </div>
               <div className={this.state.pathname !== undefined && this.state.pathname.startsWith('/albums') ? 'menu-item-active' : 'menu-item'}>
-                  <Link to="/albums" >
+                  <Link to="/albums/list" >
                       <div className="menu-item-img menu-item-img-albums" />
                   </Link>
               </div>
