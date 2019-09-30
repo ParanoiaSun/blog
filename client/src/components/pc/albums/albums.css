@@ -101,6 +101,7 @@
 
 .pc-album-photo {
     display: inline-block;
+    vertical-align: top;
     margin-right: 2rem;
     margin-bottom: 2rem;
 
@@ -130,6 +131,15 @@
     -webkit-transform: scale(1.02);
     -moz-transform: scale(1.02);
     -o-transform: scale(1.02);
+}
+
+.pc-album-photo-modal {
+    width: 56rem;
+    height: 35rem;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 

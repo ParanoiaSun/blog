@@ -1,6 +1,7 @@
 import React from 'react';
 import './albums.css';
 import {Link} from "react-router-dom";
+import swal from '@sweetalert/with-react'
 
 class PCAlbumContent extends React.Component {
     constructor(props) {
@@ -40,8 +41,21 @@ class PCAlbumContent extends React.Component {
                         create_time: "2019-09-28 19:03:23"
                     }
                 ]
-            }
+            },
+            albumCardDisplay: false
         }
+    }
+
+    setModalVisible(data) {
+        // this.setState({
+        //     albumCardDisplay
+        // });
+        swal({
+            button: null,
+            content: (
+                <div style={{ backgroundImage: 'url(' + data.img + ')' }} className="pc-album-photo-modal"/>
+            )
+        })
     }
 
     render() {
@@ -56,12 +70,15 @@ class PCAlbumContent extends React.Component {
               <div className="pc-album-photos-wrapper">
                   {this.state.album.photos.map((item, key) => {
                       return (
-                          <div key={key} id={'pc-album-photo' + item.id} className="pc-album-photo">
+                          <div onClick={() => this.setModalVisible(item)} key={key} id={'pc-album-photo' + item.id} className="pc-album-photo">
                             <img src={ item.img } alt=""/>
                           </div>
                       )
                   })}
               </div>
+              {this.state.albumCardDisplay ? <div>
+                  <img src="" alt=""/>
+              </div> : null}
           </div>
         );
     }
