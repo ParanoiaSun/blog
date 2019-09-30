@@ -76,14 +76,23 @@
 }
 
 @keyframes messageTopIn {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0px); opacity: 1; }
+}
+
+@-moz-keyframes messageTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0px); }
+}
+
+@-webkit-keyframes messageTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0px); }
+}
+
+@-o-keyframes messageTopIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0px); }
 }
 
 /* sub message detail */
