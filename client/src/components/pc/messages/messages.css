@@ -39,7 +39,11 @@
     font-size: 0.9rem;
     font-weight: bold;
     display: inline-block;
-    width: 5rem;
+    width: 20rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
 }
 
 .pc-message-detail-time {
@@ -95,9 +99,14 @@
 }
 
 /* send messages */
-.pc-messages-intro .nampo-icon{
+.pc-messages-intro p {
+    padding-left: 10px;
+    border-left: 5px solid #e94328;
+}
+
+.pc-messages-wrapper .message-icon{
     color: #e94328;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .pc-messages-send-name-input {

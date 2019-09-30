@@ -51,8 +51,7 @@ class PCMessages extends React.Component {
         return(
             <div className="pc-messages-wrapper">
                 <div className="pc-messages-intro">
-                    Hi there ~ 有什么想对我说的吗 &nbsp;
-                    <span className="nampo-icon">&#xe6b3;</span>
+                    <p>Hi there ~ 有什么想对我说的吗</p>
                     <div className="pc-messages-send-wrapper">
                         <div className="pc-messages-send-name-input">
                             <input type="text" placeholder="你的昵称"/>

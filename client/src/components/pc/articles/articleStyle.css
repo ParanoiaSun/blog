@@ -87,7 +87,7 @@ https://github.com/etigerstudio/typora-misty-theme
   font-weight: 300;
 }
 .pc-article-detail-content h1:after {
-  border-bottom: 2px dashed #afec9e;
+  border-bottom: 2px dashed #e94328;
   content: '';
   width: 100px;
   display: block;
@@ -98,7 +98,7 @@ https://github.com/etigerstudio/typora-misty-theme
   font-size: 1.75em;
   padding-left: 9px;
   line-height: 1.4;
-  border-left: 6px solid #cce5ff
+  border-left: 6px solid #e94328;
 }
 .pc-article-detail-content h3 {
   font-size: 1.5em;

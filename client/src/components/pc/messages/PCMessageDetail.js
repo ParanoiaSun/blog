@@ -16,7 +16,7 @@ class PCMessageDetail extends React.Component {
             <div style={{ animationDelay: (200 * (this.state.index + 1)) + 'ms' }} className="pc-message-detail-wrapper">
                 <div className="pc-message-detail-title">
                     <div className="pc-message-detail-name">
-                        {this.state.message.name}
+                        <span className="nampo-icon message-icon">&#xe6b3;</span> {this.state.message.name}
                     </div>
                     <div className="pc-message-detail-time">
                         {this.state.message.send_time}
