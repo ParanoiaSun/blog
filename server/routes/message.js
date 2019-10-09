@@ -1,9 +1,16 @@
 let express = require('express');
 let messageRouter = express.Router();
-let messageService = require('../service/messageService.js');
 
 messageRouter.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' })
+    res.json({data: 'message success'});
+});
+
+messageRouter.get('/getByPage', function(req, res, next) {
+    res.json({data: 'message success'});
+});
+
+messageRouter.get('/getById', function(req, res, next) {
+    res.json({data: 'message success'});
 });
 
 // messageRouter.post('/add', messageService.addMessages);
