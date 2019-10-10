@@ -1,25 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+let util = require('../util');
 
 const messageSchema = new Schema({
     name: {
-        require: true,
+        required: true,
         type: String
     },
     send_time: {
-        require: true,
+        required: true,
         type: Date,
-        default: Date.now()
+        default: util.getLocalDateTime()
     },
     is_deleted: {
-        require: true,
+        required: true,
         type: Number,
         default: 0
     },
     content: {
-        require: true,
+        required: true,
         type: String
-    }
+    },
+    sub_message: []
 });
 
 module.exports = mongoose.model('message', messageSchema);

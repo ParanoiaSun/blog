@@ -1,24 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+let util = require('../util');
 
 const articleSchema = new Schema({
     _id: {
 
     },
     title: {
-        require: true,
+        required: true,
         type: String
     },
     create_time: {
         type: Date,
-        default: Date.now()
+        required: true,
+        default: util.getLocalDateTime()
     },
     file_path: {
-        require: true,
+        required: true,
         type: String
     },
     summary: {
-        require: true,
+        required: true,
         type: String
     },
     is_deleted: {
@@ -29,7 +31,7 @@ const articleSchema = new Schema({
         type: [String]
     },
     category: {
-        require: true,
+        required: true,
         type: String
     },
     comments: []

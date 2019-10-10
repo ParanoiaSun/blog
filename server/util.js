@@ -1,4 +1,3 @@
-// let express = require('express');
 
 const serverErrorCode = 0;
 const successCode = 1;
@@ -20,6 +19,19 @@ function responseError(res, httpCode = 500, code = serverErrorCode, message='ser
     res.status(httpCode).json(responseData);
 }
 
+// 获取本地时间，new Date()获取的时间与本地差8小时
+function getLocalDateTime() {
+    let date = new Date();
+    date.setTime(date.setHours(date.getHours() + 8));
+    return date;
+}
+
+function getLocalDateTimeStamp() {
+    return getLocalDateTime().getTime();
+}
+
 exports.businessErrorCode = businessErrorCode;
 exports.responseSuccess = responseSuccess;
 exports.responseError = responseError;
+exports.getLocalDateTime = getLocalDateTime;
+exports.getLocalDateTimeStamp = getLocalDateTimeStamp;
