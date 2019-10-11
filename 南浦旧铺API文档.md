@@ -6,7 +6,7 @@
 
 ### 添加留言
 
-`/api/addMessage`
+`/message/addMessage`
 
 请求方法：POST 
 
@@ -25,7 +25,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/addMessage`
+`http://{ip:port}/api/message/addMessage`
 
 ##### 响应示例
 
@@ -39,7 +39,7 @@
 
 ### 添加子留言
 
-`/api/addSubMessage`
+`/message/addSubMessage`
 
 请求方法：POST 
 
@@ -64,7 +64,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/addSubMessage?message_id=123`
+`http://{ip:port}/api/message/addSubMessage?message_id=123`
 
 ##### 响应示例
 
@@ -78,7 +78,7 @@
 
 ### 前端查询留言展示列表
 
-`/api/getByPage`
+`/message/getByPage`
 
 请求方法：GET
 
@@ -86,7 +86,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/getByPage`
+`http://{ip:port}/api/message/getByPage`
 
 ##### 响应示例
 ```json
@@ -121,7 +121,7 @@
 
 ### 前端使用ID查询留言
 
-`/api/getById`
+`/message/getById`
 
 请求方法：GET
 
@@ -137,7 +137,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/getById?message_id=123`
+`http://{ip:port}/api/message/getById?message_id=123`
 
 ##### 响应示例
 
@@ -172,7 +172,7 @@
 
 ### 前端使用ID查询子留言
 
-`/api/getSubMessageById`
+`/message/getSubMessageById`
 
 请求方法：GET
 
@@ -188,7 +188,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/getSubMessageById?message_id=123`
+`http://{ip:port}/api/message/getSubMessageById?message_id=123`
 
 ##### 响应示例
 
@@ -217,7 +217,7 @@
 
 ### 后台根据留言ID删除留言
 
-`/api/removeMessage`
+`/message/removeMessage`
 
 请求方法：GET
 
@@ -233,7 +233,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/removeMessage?message_id=1234`
+`http://{ip:port}/api/message/removeMessage?message_id=1234`
 
 ##### 响应示例
 
@@ -254,7 +254,7 @@
 
 ### 后台根据留言ID恢复删除留言
 
-`/api/recoverMessage`
+`/message/recoverMessage`
 
 请求方法：GET
 
@@ -270,7 +270,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/recoverMessage?message_id=1234`
+`http://{ip:port}/api/message/recoverMessage?message_id=1234`
 
 ##### 响应示例
 
@@ -291,7 +291,7 @@
 
 ### 后台根据子留言ID删除子留言
 
-`/api/removeSubMessage`
+`/message/removeSubMessage`
 
 请求方法：GET
 
@@ -308,7 +308,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/removeSubMessage?message_id=1234&sub_message_id=11`
+`http://{ip:port}/api/message/removeSubMessage?message_id=1234&sub_message_id=11`
 
 ##### 响应示例
 
@@ -345,7 +345,7 @@
 
 ### 后台根据子留言ID删除子留言
 
-`/api/recoverSubMessage`
+`/message/recoverSubMessage`
 
 请求方法：GET
 
@@ -362,7 +362,7 @@
 
 ##### 请求示例
 
-`http://{ip:port}/api/recoverSubMessage?message_id=1234&sub_message_id=11`
+`http://{ip:port}/api/message/recoverSubMessage?message_id=1234&sub_message_id=11`
 
 ##### 响应示例
 
