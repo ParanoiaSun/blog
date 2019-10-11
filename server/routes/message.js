@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 let util = require('../util');
 let Message = require('../models/messageModel.js');
 
-messageRouter.get('/', function(req, res, next) {
+messageRouter.get('/', function(req, res) {
     res.send(util.responseSuccess(res, '留言api测试成功！'));
 });
 
-messageRouter.get('/getByPage', function(req, res, next) {
+messageRouter.get('/getByPage', function(req, res) {
     Message.find({
         is_deleted: 0
     }, '_id send_time name content', { sort: { send_time: -1 } },
@@ -47,7 +47,7 @@ messageRouter.get('/getByPage', function(req, res, next) {
     });
 });
 
-messageRouter.get('/getById', function(req, res, next) {
+messageRouter.get('/getById', function(req, res) {
     Message.findOne({
         _id: req.query.message_id,
         is_deleted: 0
@@ -82,7 +82,7 @@ messageRouter.get('/getById', function(req, res, next) {
     });
 });
 
-messageRouter.get('/getSubMessageById', function(req, res, next) {
+messageRouter.get('/getSubMessageById', function(req, res) {
     Message.aggregate([
         { $match : { '_id': mongoose.Types.ObjectId(req.query.message_id) } },
         { $unwind: '$sub_message' },
@@ -94,11 +94,13 @@ messageRouter.get('/getSubMessageById', function(req, res, next) {
                 _id: '$_id',sub_count: {$sum: 1}, sub_message: {$push: '$sub_message'}
         }}
     ]).exec((err, result) => {
-        console.log(result);
+        console.log(result.sub_message);
         if(err)
             res.send(util.responseError(res));
-        else {
-            res.send(util.responseSuccess(res, '获取留言表成功', result));
+        else if(!util.checkEmpty(result) && result.length > 0){
+            res.send(util.responseSuccess(res, '获取子留言列表成功', result[0].sub_message));
+        } else {
+            res.send(util.responseSuccess(res, '获取子留言列表成功', []));
         }
     });
 });
@@ -133,6 +135,72 @@ messageRouter.post('/addSubMessage', function(req, res) {
             else
                 res.send(util.responseSuccess(res, '留言回复发布成功'));
     });
+});
+
+messageRouter.get('/removeMessage', function(req, res) {
+    Message.findOneAndUpdate(
+        { _id: req.query.message_id },
+        { is_deleted: 1 },
+        { new: true },
+        function(err, message) {
+            if (err)
+                res.send(util.responseError(res));
+            else
+                res.send(util.responseSuccess(res, '留言删除成功', message));
+        }
+    );
+});
+
+messageRouter.get('/recoverMessage', function(req, res) {
+    Message.findOneAndUpdate(
+        { _id: req.query.message_id },
+        { is_deleted: 0 },
+        { new: true },
+        function(err, message) {
+            if (err)
+                res.send(util.responseError(res));
+            else
+                res.send(util.responseSuccess(res, '留言恢复成功', message));
+        }
+    );
+});
+
+messageRouter.get('/removeSubMessage', function(req, res) {
+    Message.findOne(
+        { _id: req.query.message_id },
+        function(err, message) {
+            if (err)
+                res.send(util.responseError(res));
+            else {
+                message.sub_message.id(req.query.sub_message_id).is_deleted = 1;
+                message.save(function (err) {
+                    if (err)
+                        res.send(util.responseError(res));
+                    else
+                        res.send(util.responseSuccess(res, '子留言删除成功', message));
+                });
+            }
+        }
+    );
+});
+
+messageRouter.get('/recoverSubMessage', function(req, res) {
+    Message.findOne(
+        { _id: req.query.message_id },
+        function(err, message) {
+            if (err)
+                res.send(util.responseError(res));
+            else {
+                message.sub_message.id(req.query.sub_message_id).is_deleted = 0;
+                message.save(function (err) {
+                    if (err)
+                        res.send(util.responseError(res));
+                    else
+                        res.send(util.responseSuccess(res, '子留言恢复成功', message));
+                });
+            }
+        }
+    );
 });
 
 module.exports = messageRouter;

@@ -18,4 +18,12 @@ photoRouter.get('/getByPhotoId', function(req, res) {
     res.send(util.responseSuccess(res));
 });
 
+photoRouter.post('/createAlbum', function(req, res) {
+    res.send(util.responseSuccess(res));
+});
+
+photoRouter.post('/uploadPhoto', function(req, res) {
+    res.send(util.responseSuccess(res));
+});
+
 module.exports = photoRouter;
