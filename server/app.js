@@ -22,7 +22,7 @@ const port = process.env.PORT || 8000;
 //   target:targetUrl
 // });
 
-mongoose.connect('mongodb://localhost:27017/nampo', function (err) {
+mongoose.connect('mongodb://localhost:27017/nampo', { useNewUrlParser: true, useUnifiedTopology: true }, function (err) {
   if (err) {
     console.log(err, "数据库连接失败");
     return;

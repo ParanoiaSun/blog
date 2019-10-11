@@ -26,12 +26,17 @@ function getLocalDateTime() {
     return date;
 }
 
-function getLocalDateTimeStamp() {
-    return getLocalDateTime().getTime();
+function checkStringEqual(s1, s2) {
+    return s1 + '' === s2 + '';
+}
+
+function checkEmpty(data) {
+    return data + '' === 'null' || data + '' === 'undefined' || data + '' === '';
 }
 
 exports.businessErrorCode = businessErrorCode;
 exports.responseSuccess = responseSuccess;
 exports.responseError = responseError;
 exports.getLocalDateTime = getLocalDateTime;
-exports.getLocalDateTimeStamp = getLocalDateTimeStamp;
+exports.checkStringEqual = checkStringEqual;
+exports.checkEmpty = checkEmpty;
