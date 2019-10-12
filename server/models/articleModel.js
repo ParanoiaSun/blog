@@ -2,10 +2,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let util = require('../util');
 
-const articleSchema = new Schema({
-    _id: {
-
+const commentSchema = new Schema({
+    name: {
+        required: true,
+        type: String
     },
+    send_time: {
+        required: true,
+        type: Date,
+        default: util.getLocalDateTime()
+    },
+    is_deleted: {
+        required: true,
+        type: Number,
+        default: 0
+    },
+    content: {
+        required: true,
+        type: String
+    },
+    reply: {
+        type: String,
+        default: ''
+    }
+});
+
+const articleSchema = new Schema({
     title: {
         required: true,
         type: String
@@ -16,14 +38,14 @@ const articleSchema = new Schema({
         default: util.getLocalDateTime()
     },
     file_path: {
-        required: true,
-        type: String
+        type: String,
+        default: ''
     },
     summary: {
-        required: true,
         type: String
     },
     is_deleted: {
+        required: true,
         type: Number,
         default: 0
     },
@@ -31,11 +53,11 @@ const articleSchema = new Schema({
         type: [String]
     },
     category: {
-        required: true,
-        type: String
+        type: String,
+        default: ''
     },
-    comments: []
+    comments: [commentSchema]
 });
 
-// module.exports = mongoose.model('article', articleSchema);
+module.exports = mongoose.model('article', articleSchema);
 

@@ -14,6 +14,143 @@
 
 # 博文
 
+### 发布博文
+
+`/blog/uploadBlog`
+
+请求方法：POST 
+
+请求类型：application/x-www-form-urlencoded
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 请求体参数
+
+| 参数名称 | 参数类型      | 是否必传 | 描述             |
+| -------- | ------------- | -------- | ---------------- |
+| title    | String        | Y        | 留言人昵称       |
+| summary  | String        | Y        | 文章简介         |
+| file     | MultipartFile | Y        | 文章markdown文件 |
+
+##### 请求示例
+
+`http://{ip:port}/api/blog/uploadBlog`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "博文发布成功",
+    "data": {
+        "create_time": "2019-10-12T13:59:24.280Z",
+        "file_path": "public/blogs/1234.md",
+        "is_deleted": 0,
+        "tag": [],
+        "category": "",
+        "_id": "1234",
+        "comments": [],
+        "title": "我的第二篇博文",
+        "summary": "那真的相当精彩",
+        "__v": 0
+    }
+}
+```
+
+### 发布博文回复
+
+`/blog/sendBlogComment`
+
+请求方法：POST 
+
+请求类型：application/x-www-form-urlencoded
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 查询参数
+
+| 参数名称   | 参数类型 | 是否必传 | 描述     |
+| ---------- | -------- | -------- | -------- |
+| message_id | String   | Y        | 父留言ID |
+
+###### 请求体参数
+
+| 参数名称 | 参数类型 | 是否必传 | 描述       |
+| -------- | -------- | -------- | ---------- |
+| name     | String   | Y        | 留言人昵称 |
+| content  | String   | Y        | 留言内容   |
+
+##### 请求示例
+
+`http://{ip:port}/api/blog/sendBlogComment?blog_id=1234`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "博文回复发布成功",
+    "data": {}
+}
+```
+
+### 前端查询博文展示列表
+
+`/blog/getByPage`
+
+请求方法：GET
+
+响应内容：JSON
+
+##### 请求示例
+
+`http://{ip:port}/api/blog/getByPage`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "获取博文列表成功",
+    "data": [
+        {
+            "create_time": "2019-10-12T13:59:24.280Z",
+            "file_path": "public/blogs/5da16bbc9be9ef3c8ba60025.md",
+            "tag": [],
+            "category": "",
+            "_id": "1234",
+            "title": "我的第二篇博文",
+            "summary": "那真的相当精彩"
+        },
+        {
+            "create_time": "2019-10-12T13:44:46.171Z",
+            "file_path": "public/blogs/5da1684e45db2333ba3c7175.md",
+            "tag": [],
+            "category": "",
+            "_id": "1233",
+            "title": "1234",
+            "summary": "1111",
+            "comments": [
+                {
+                    "send_time": "2019-10-12T13:54:29.776Z",
+                    "is_deleted": 0,
+                    "reply": "",
+                    "_id": "10",
+                    "name": "sonia",
+                    "content": "不错。"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### 
+
 # 相册
 
 # 留言板
@@ -24,7 +161,7 @@
 
 请求方法：POST 
 
-请求类型：application/application/x-www-form-urlencoded
+请求类型：application/x-www-form-urlencoded
 
 响应内容：JSON
 
@@ -57,7 +194,7 @@
 
 请求方法：POST 
 
-请求类型：application/application/x-www-form-urlencoded
+请求类型：application/x-www-form-urlencoded
 
 响应内容：JSON
 
