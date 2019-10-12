@@ -34,9 +34,29 @@ function checkEmpty(data) {
     return data + '' === 'null' || data + '' === 'undefined' || data + '' === '';
 }
 
+function getImageExtName(type) {
+    let extName = '';
+    switch (type) {
+        case 'image/pjpeg':
+            extName = 'jpg';
+            break;
+        case 'image/jpeg':
+            extName = 'jpg';
+            break;
+        case 'image/png':
+            extName = 'png';
+            break;
+        case 'image/x-png':
+            extName = 'png';
+            break;
+    }
+    return extName;
+}
+
 exports.businessErrorCode = businessErrorCode;
 exports.responseSuccess = responseSuccess;
 exports.responseError = responseError;
 exports.getLocalDateTime = getLocalDateTime;
 exports.checkStringEqual = checkStringEqual;
 exports.checkEmpty = checkEmpty;
+exports.getImageExtName = getImageExtName;

@@ -1,5 +1,14 @@
 - [博文](#博文)
+  - [发布博文](#发布博文)
+  - [发布博文回复](#发布博文回复)
+  - [前端查询博文展示列表](#前端查询博文展示列表)
+  - [前端使用ID查询博文](#前端使用ID查询博文)
 - [相册](#相册)
+  - [创建相册](#创建相册)
+  - [上传照片](#上传照片)
+  - [前端查询相册展示列表](#前端查询相册展示列表)
+  - [前端使用ID查询相册](#前端使用ID查询相册)
+  - [前端使用ID查询照片](#前端使用ID查询照片)
 - [留言板](#留言板)
   - [添加留言](#添加留言)
   - [添加子留言](#添加子留言)
@@ -46,7 +55,7 @@
     "message": "博文发布成功",
     "data": {
         "create_time": "2019-10-12T13:59:24.280Z",
-        "file_path": "public/blogs/1234.md",
+        "file_path": "1234.md",
         "is_deleted": 0,
         "tag": [],
         "category": "",
@@ -73,16 +82,16 @@
 
 ###### 查询参数
 
-| 参数名称   | 参数类型 | 是否必传 | 描述     |
-| ---------- | -------- | -------- | -------- |
-| message_id | String   | Y        | 父留言ID |
+| 参数名称 | 参数类型 | 是否必传 | 描述   |
+| -------- | -------- | -------- | ------ |
+| blog_id  | String   | Y        | 博文ID |
 
 ###### 请求体参数
 
 | 参数名称 | 参数类型 | 是否必传 | 描述       |
 | -------- | -------- | -------- | ---------- |
-| name     | String   | Y        | 留言人昵称 |
-| content  | String   | Y        | 留言内容   |
+| name     | String   | Y        | 评论者昵称 |
+| content  | String   | Y        | 评论内容   |
 
 ##### 请求示例
 
@@ -119,7 +128,7 @@
     "data": [
         {
             "create_time": "2019-10-12T13:59:24.280Z",
-            "file_path": "public/blogs/5da16bbc9be9ef3c8ba60025.md",
+            "file_path": "1234.md",
             "tag": [],
             "category": "",
             "_id": "1234",
@@ -128,7 +137,7 @@
         },
         {
             "create_time": "2019-10-12T13:44:46.171Z",
-            "file_path": "public/blogs/5da1684e45db2333ba3c7175.md",
+            "file_path": "1233.md",
             "tag": [],
             "category": "",
             "_id": "1233",
@@ -149,9 +158,265 @@
 }
 ```
 
+### 前端使用ID查询博文
+
+`/blog/getById`
+
+请求方法：GET
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 查询参数
+
+| 参数名称 | 参数类型 | 是否必传 | 描述   |
+| -------- | -------- | -------- | ------ |
+| blog_id  | String   | Y        | 博文ID |
+
+##### 请求示例
+
+`http://{ip:port}/api/blog/getById?message_id=1234`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "获取博文成功",
+    "data": {
+        "create_time": "2019-10-12T13:44:46.171Z",
+        "file_path": "1234.md",
+        "tag": [],
+        "category": "",
+        "_id": "1234",
+        "title": "1234",
+        "summary": "1111",
+        "comments": [
+            {
+                "send_time": "2019-10-12T13:54:29.776Z",
+                "is_deleted": 0,
+                "reply": "",
+                "_id": "10",
+                "name": "sonia",
+                "content": "不错。"
+            }
+        ]
+    }
+}
+```
+
 ### 
 
 # 相册
+
+### 创建相册
+
+`/photo/createAlbum`
+
+请求方法：POST 
+
+请求类型：application/x-www-form-urlencoded
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 请求体参数
+
+| 参数名称 | 参数类型      | 是否必传 | 描述     |
+| -------- | ------------- | -------- | -------- |
+| name     | String        | Y        | 相册名称 |
+| cover    | MultipartFile | Y        | 相册封面 |
+
+##### 请求示例
+
+`http://localhost:8000/api/photo/createAlbum`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "创建相册成功",
+    "data": {
+        "cover": "123.png",
+        "create_time": "2019-10-12T15:21:31.275Z",
+        "is_deleted": 0,
+        "_id": "123",
+        "photos": [],
+        "name": "我的第一个相册",
+        "__v": 0
+    }
+}
+```
+
+### 上传照片
+
+`/photo/uploadPhoto`
+
+请求方法：POST 
+
+请求类型：application/x-www-form-urlencoded
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 查询参数
+
+| 参数名称 | 参数类型 | 是否必传 | 描述   |
+| -------- | -------- | -------- | ------ |
+| album_id | String   | Y        | 相册ID |
+
+###### 请求体参数
+
+| 参数名称    | 参数类型      | 是否必传 | 描述     |
+| ----------- | ------------- | -------- | -------- |
+| description | String        | Y        | 照片描述 |
+| photo       | MultipartFile | Y        | 照片文件 |
+
+##### 请求示例
+
+`http://{ip:port}/api/photo/uploadPhoto?album_id=123`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "照片上传成功",
+    "data": {}
+}
+```
+
+### 前端查询相册展示列表
+
+`/photo/getAlbumList`
+
+请求方法：GET
+
+响应内容：JSON
+
+##### 请求示例
+
+`http://{ip:port}/api/photo/getAlbumList`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "获取相册列表成功",
+    "data": [
+        {
+            "cover": "2.png",
+            "create_time": "2019-10-12T15:38:51.736Z",
+            "_id": "2",
+            "photos": [],
+            "name": "我的第二个相册"
+        },
+        {
+            "cover": "2.png",
+            "create_time": "2019-10-12T15:21:31.275Z",
+            "_id": "2",
+            "photos": [
+                {
+                    "img": "100.png",
+                    "description": "我的第一张照片",
+                    "create_time": "2019-10-12T15:47:26.569Z",
+                    "is_deleted": 0,
+                    "_id": "100"
+                }
+            ],
+            "name": "我的第一个相册"
+        }
+    ]
+}
+```
+
+### 前端使用ID查询相册
+
+`/photo/getAlbumById`
+
+请求方法：GET
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 查询参数
+
+| 参数名称 | 参数类型 | 是否必传 | 描述   |
+| -------- | -------- | -------- | ------ |
+| album_id | String   | Y        | 相册ID |
+
+##### 请求示例
+
+`http://{ip:port}/api/photo/getAlbumById?album_id=123`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "获取相册成功",
+    "data": {
+        "cover": "123.png",
+        "create_time": "2019-10-12T15:21:31.275Z",
+        "_id": "123",
+        "photos": [
+            {
+                "img": "1.png",
+                "description": "我的第一张照片",
+                "create_time": "2019-10-12T15:47:26.569Z",
+                "is_deleted": 0,
+                "_id": "1"
+            }
+        ],
+        "name": "我的第一个相册"
+    }
+}
+```
+
+### 前端使用ID查询照片
+
+`/photo/getByPhotoId`
+
+请求方法：GET
+
+响应内容：JSON
+
+##### 请求参数
+
+###### 查询参数
+
+| 参数名称 | 参数类型 | 是否必传 | 描述   |
+| -------- | -------- | -------- | ------ |
+| album_id | String   | Y        | 相册ID |
+| photo_id | String   | Y        | 照片ID |
+
+##### 请求示例
+
+`http://{ip:port}/api/photo/getByPhotoId?album_id=123&photo_id=1`
+
+##### 响应示例
+
+```json
+{
+    "code": 1,
+    "message": "获取照片成功",
+    "data": {
+        "img": "1.png",
+        "description": "我的第一张照片",
+        "create_time": "2019-10-12T15:47:26.569Z",
+        "is_deleted": 0,
+        "_id": "1"
+    }
+}
+```
+
+### 
 
 # 留言板
 

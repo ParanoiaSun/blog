@@ -50,7 +50,38 @@ blogRouter.get('/getByPage', function(req, res) {
 });
 
 blogRouter.get('/getById', function(req, res) {
-    res.send(util.responseSuccess(res));
+    Article.findOne({
+            _id: req.query.blog_id,
+            is_deleted: 0
+    }, '_id create_time file_path tag category title summary',
+    function(err, article) {
+        if(err)
+            res.send(util.responseError(res));
+        else if(!util.checkEmpty(article)){
+            let article_id = article._id;
+            Article.aggregate([
+                { $match: { '_id': article_id } },
+                { $unwind: '$comments' },
+                { $match: { 'comments.is_deleted': 0 } },
+                { $sort: { 'comments.send_time': 1 } },
+                { $group: {
+                        _id: '$_id',sub_count: {$sum: 1}, comments: {$push: '$comments'}
+                    }}
+            ]).exec((err, result) => {
+                if(err)
+                    res.send(util.responseError(res));
+                else {
+                    result.forEach(item => {
+                        if(util.checkStringEqual(article._id, item._id))
+                            article.comments = item.comments;
+                    });
+                    res.send(util.responseSuccess(res, '获取博文成功', article));
+                }
+            })
+        } else {
+            res.send(util.responseSuccess(res, '获取博文成功', {}));
+        }
+    });
 });
 
 blogRouter.get('/getByCategory', function(req, res) {
