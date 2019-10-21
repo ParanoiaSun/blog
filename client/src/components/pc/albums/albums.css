@@ -1,3 +1,7 @@
+.pc-albums-wrapper {
+    min-height: 32rem;
+}
+
 .albums-cover-wrapper {
     margin: 2rem 0 0 0;
     width: 100%;
