@@ -2,15 +2,40 @@ import { isObjNull, getStrValue } from "./CommonUtil";
 
 const serverUrl = 'http://127.0.0.1:8000/api';
 
-export function fetchPost(url, params, header) {
+export function fetchPost(url, params, bodyParams, header) {
     if(isObjNull(header))
         header = {};
 
-    let formData = new FormData();
-    if (!isObjNull(params)) {
-        params.forEach(function(value, key, map) {
-            formData.append(key, value);
+    let formData = '';
+
+    // if (!isObjNull(params)) {
+    //     params.forEach(function(value, key, map) {
+    //         console.log(key + ': ' + value);
+    //         formData.append(key, value);
+    //     });
+    // }
+    if (params) {
+        let paramsArray = [];
+        params.forEach(function(value, key) {
+            paramsArray.push(key + '=' + encodeURI(getStrValue(value)));
         });
+
+        if (paramsArray.length > 0) {
+            if (url.search(/\?/) === -1) {
+                url += '?' + paramsArray.join('&');
+            } else {
+                url += '&' + paramsArray.join('&');
+            }
+        }
+    }
+
+    if (bodyParams) {
+        let paramsArray = [];
+        //拼接参数
+        bodyParams.forEach(function(value, key, map) {
+            paramsArray.push(key + '=' + encodeURI(getStrValue(value)));
+        });
+        formData = paramsArray.join('&');
     }
 
     const request = fetch(serverUrl + url, {

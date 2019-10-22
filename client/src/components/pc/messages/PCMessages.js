@@ -2,7 +2,7 @@ import React from 'react';
 import './messages.css';
 import PCMessageDetail from "./PCMessageDetail";
 import { isStringEmpty } from "../../../util/CommonUtil";
-import { fetchGet } from "../../../util/HttpUtil";
+import { fetchGet, fetchPost } from "../../../util/HttpUtil";
 
 class PCMessages extends React.Component {
 
@@ -10,7 +10,6 @@ class PCMessages extends React.Component {
         super(props);
         this.state = {
             total: 4,
-            id: 1,
             messages: [
                 {
                     _id: 100,
@@ -25,11 +24,13 @@ class PCMessages extends React.Component {
                     send_time: "2019-09-22 18:11:23",
                     sub_message: [
                         {
+                            _id: 1001,
                             content: "大自然是美的，世界是美的，我们也是美的。只要眼里有美，心里就有大美;只要心里有美，生活才会至美;只要生活有美，生命才能唯美。美，是一种接受，是一种感受，是一种享受。美，五彩斑斓，随心而生;美，无处不在，随心而行;美，无止无境，随心而动。",
                             name: "Beth Ann",
                             send_time: "2019-09-23 18:11:23"
                         },
                         {
+                            _id: 1002,
                             content: "大自然是美的，世界是美的，我们也是美的。只要眼里有美，心里就有大美;只要心里有美，生活才会至美;只要生活有美，生命才能唯美。美，是一种接受，是一种感受，是一种享受。美，五彩斑斓，随心而生;美，无处不在，随心而行;美，无止无境，随心而动。",
                             name: "Beth Ann",
                             send_time: "2019-09-22 18:11:23"
@@ -55,11 +56,12 @@ class PCMessages extends React.Component {
     }
 
     componentDidMount() {
-        fetchGet('/message/getByPage', null, null).then((data) => {
-            if(data.code === 1){
-                console.log(data);
+        fetchGet('/message/getByPage', null, null).then((res) => {
+            if(res.code === 1){
+                console.log(res);
                 this.setState({
-                    messages: data.data
+                    messages: res.data,
+                    total: res.data.length
                 });
             }
         }, (fail) => {
@@ -71,17 +73,18 @@ class PCMessages extends React.Component {
         if(isStringEmpty(this.state.sendInputName) || isStringEmpty(this.state.sendInputContent)) {
             console.log('请完善留言信息^_^');
         } else {
-            this.setState({
-                id: this.state.id + 1,
-                messages: [{
-                        id: this.state.id,
-                        content: this.state.sendInputContent,
-                        name: this.state.sendInputName,
-                        send_time: '2019-09-30 12:13:14'
-                    }, ...this.state.messages],
-                total: this.state.total + 1
-            }, () => {
-                console.log(this.state.messages);
+            let params = new Map();
+            params.set('name', this.state.sendInputName);
+            params.set('content', this.state.sendInputContent);
+            fetchPost('/message/addMessage', params, null).then((res) => {
+                if(res.code === 1){
+                    this.setState({
+                        messages: [ res.data, ...this.state.messages],
+                        total: this.state.total + 1
+                    });
+                }
+            }, (fail) => {
+                // TODO 处理请求fail
             });
         }
     }

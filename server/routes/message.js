@@ -110,11 +110,11 @@ messageRouter.post('/addMessage', function(req, res) {
     message.name = req.body.name;
     message.content = req.body.content;
     message.send_time = util.getLocalDateTime();
-    message.save(function(err) {
+    message.save(function(err, result) {
         if (err)
             util.responseError(res);
         else
-            util.responseSuccess(res, '留言发布成功');
+            util.responseSuccess(res, '留言发布成功', result);
     });
 });
 
@@ -126,14 +126,15 @@ messageRouter.post('/addSubMessage', function(req, res) {
         content: req.body.content,
         send_time: util.getLocalDateTime()
     };
-    Message.updateOne(
+    Message.findOneAndUpdate(
         { _id: message_id },
         { $addToSet: { sub_message: [sub_message] } },
-        function(err) {
+        { new: true },
+        function(err, message) {
             if (err)
                 util.responseError(res);
             else
-                util.responseSuccess(res, '留言回复发布成功');
+                util.responseSuccess(res, '留言回复发布成功', message);
     });
 });
 

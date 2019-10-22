@@ -1,6 +1,7 @@
 import React from 'react';
 import './messages.css';
 import { isStringEmpty } from '../../../util/CommonUtil';
+import {fetchPost} from "../../../util/HttpUtil";
 
 class PCMessageDetail extends React.Component {
 
@@ -12,7 +13,7 @@ class PCMessageDetail extends React.Component {
             index: props.index,
             sendSubInputName: '',
             sendSubInputContent: '',
-            sendInputDisplay: false,
+            sendInputDisplay: false
         }
     }
 
@@ -20,13 +21,19 @@ class PCMessageDetail extends React.Component {
         if(isStringEmpty(this.state.sendSubInputName) || isStringEmpty(this.state.sendSubInputContent)) {
             console.log('请完善回复信息^_^');
         } else {
-            this.setState({
-                subMessage: [{
-                    content: this.state.sendSubInputContent,
-                    name: this.state.sendSubInputName,
-                    send_time: '2019-09-30 12:13:14'
-                }, ...this.state.subMessage]
-            })
+            let params = new Map();
+            params.set('message_id', this.state.message._id);
+            let bodyParams = new Map();
+            bodyParams.set('name', this.state.sendSubInputName);
+            bodyParams.set('content', this.state.sendSubInputContent);
+            fetchPost('/message/addSubMessage', params, bodyParams, null).then((res) => {
+                if(res.code === 1){
+                    this.setState({
+                        messages: [ res.data, ...this.state.subMessage],
+                        total: this.state.total + 1
+                    });
+                }
+            });
         }
     }
 
@@ -85,7 +92,7 @@ class PCMessageDetail extends React.Component {
                 {(this.state.subMessage === undefined || this.state.subMessage.length === 0) ? null :
                     <div className="pc-sub-message-detail-wrapper">
                         {this.state.subMessage.map((item, key) => {
-                        return <div className="pc-sub-message-detail-content" key={ key }>
+                        return <div className="pc-sub-message-detail-content" key={ item._id }>
                                 <div className="pc-message-detail-title">
                                     <div className="pc-message-detail-name">
                                         {item.name}
