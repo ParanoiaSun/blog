@@ -14,13 +14,22 @@ const messageRouter = require('./routes/message');
 const photoRouter = require('./routes/photo');
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 8000 || process.env.PORT;
 
 // 转发服务端api请求
 // const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
 // const proxy = httpProxy.createProxyServer({
 //   target:targetUrl
 // });
+
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE,OPTIONS,PATCH');
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  res.header('Cache-Control', 'no-cache');
+  next();
+});
 
 mongoose.connect('mongodb://localhost:27017/nampo', { useNewUrlParser: true, useUnifiedTopology: true }, function (err) {
   if (err) {
@@ -57,9 +66,9 @@ app.use('/api/message', messageRouter);
 app.use('/api/photo', photoRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {

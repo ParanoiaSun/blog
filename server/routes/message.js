@@ -5,7 +5,7 @@ let util = require('../util');
 let Message = require('../models/messageModel.js');
 
 messageRouter.get('/', function(req, res) {
-    res.send(util.responseSuccess(res, '留言api测试成功！'));
+    util.responseSuccess(res, '留言api测试成功！');
 });
 
 messageRouter.get('/getByPage', function(req, res) {
@@ -14,7 +14,7 @@ messageRouter.get('/getByPage', function(req, res) {
     }, '_id send_time name content', { sort: { send_time: -1 } },
     function(err, message) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(message)){
             let message_id = [];
             message.forEach(m => message_id.push(m._id));
@@ -30,7 +30,7 @@ messageRouter.get('/getByPage', function(req, res) {
                 }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     message.forEach(m => {
                         result.forEach(item => {
@@ -38,11 +38,11 @@ messageRouter.get('/getByPage', function(req, res) {
                                 m.sub_message = item.sub_message;
                         });
                     });
-                    res.send(util.responseSuccess(res, '获取留言列表成功', message));
+                    util.responseSuccess(res, '获取留言列表成功', message);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取留言列表成功', []));
+            util.responseSuccess(res, '获取留言列表成功', []);
         }
     });
 });
@@ -54,7 +54,7 @@ messageRouter.get('/getById', function(req, res) {
     }, '_id send_time name content',
     function(err, message) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(message)){
             let message_id = message._id;
             Message.aggregate([
@@ -67,17 +67,17 @@ messageRouter.get('/getById', function(req, res) {
                 }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     result.forEach(item => {
                         if(util.checkStringEqual(message._id, item._id))
                             message.sub_message = item.sub_message;
                     });
-                    res.send(util.responseSuccess(res, '获取留言表成功', message));
+                    util.responseSuccess(res, '获取留言表成功', message);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取留言表成功', {}));
+            util.responseSuccess(res, '获取留言表成功', {});
         }
     });
 });
@@ -96,11 +96,11 @@ messageRouter.get('/getSubMessageById', function(req, res) {
     ]).exec((err, result) => {
         console.log(result.sub_message);
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(result) && result.length > 0){
-            res.send(util.responseSuccess(res, '获取子留言列表成功', result[0].sub_message));
+            util.responseSuccess(res, '获取子留言列表成功', result[0].sub_message);
         } else {
-            res.send(util.responseSuccess(res, '获取子留言列表成功', []));
+            util.responseSuccess(res, '获取子留言列表成功', []);
         }
     });
 });
@@ -112,9 +112,9 @@ messageRouter.post('/addMessage', function(req, res) {
     message.send_time = util.getLocalDateTime();
     message.save(function(err) {
         if (err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else
-            res.send(util.responseSuccess(res, '留言发布成功'));
+            util.responseSuccess(res, '留言发布成功');
     });
 });
 
@@ -131,9 +131,9 @@ messageRouter.post('/addSubMessage', function(req, res) {
         { $addToSet: { sub_message: [sub_message] } },
         function(err) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else
-                res.send(util.responseSuccess(res, '留言回复发布成功'));
+                util.responseSuccess(res, '留言回复发布成功');
     });
 });
 
@@ -144,9 +144,9 @@ messageRouter.get('/removeMessage', function(req, res) {
         { new: true },
         function(err, message) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else
-                res.send(util.responseSuccess(res, '留言删除成功', message));
+                util.responseSuccess(res, '留言删除成功', message);
         }
     );
 });
@@ -158,9 +158,9 @@ messageRouter.get('/recoverMessage', function(req, res) {
         { new: true },
         function(err, message) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else
-                res.send(util.responseSuccess(res, '留言恢复成功', message));
+                util.responseSuccess(res, '留言恢复成功', message);
         }
     );
 });
@@ -170,14 +170,14 @@ messageRouter.get('/removeSubMessage', function(req, res) {
         { _id: req.query.message_id },
         function(err, message) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
                 message.sub_message.id(req.query.sub_message_id).is_deleted = 1;
                 message.save(function (err) {
                     if (err)
-                        res.send(util.responseError(res));
+                        util.responseError(res);
                     else
-                        res.send(util.responseSuccess(res, '子留言删除成功', message));
+                        util.responseSuccess(res, '子留言删除成功', message);
                 });
             }
         }
@@ -189,14 +189,14 @@ messageRouter.get('/recoverSubMessage', function(req, res) {
         { _id: req.query.message_id },
         function(err, message) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
                 message.sub_message.id(req.query.sub_message_id).is_deleted = 0;
                 message.save(function (err) {
                     if (err)
-                        res.send(util.responseError(res));
+                        util.responseError(res);
                     else
-                        res.send(util.responseSuccess(res, '子留言恢复成功', message));
+                        util.responseSuccess(res, '子留言恢复成功', message);
                 });
             }
         }

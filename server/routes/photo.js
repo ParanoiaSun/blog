@@ -8,7 +8,7 @@ const fs = require('fs');
 let util = require('../util');
 
 photoRouter.get('/', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 photoRouter.get('/getAlbumList', function(req, res) {
@@ -17,7 +17,7 @@ photoRouter.get('/getAlbumList', function(req, res) {
         }, '_id cover create_time photos name', { sort: { create_time: -1 } },
     function(err, albums) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(albums)){
             let album_id = [];
             albums.forEach(a => album_id.push(a._id));
@@ -33,7 +33,7 @@ photoRouter.get('/getAlbumList', function(req, res) {
                     }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     albums.forEach(a => {
                         result.forEach(item => {
@@ -41,11 +41,11 @@ photoRouter.get('/getAlbumList', function(req, res) {
                                 a.photos = item.photos;
                         });
                     });
-                    res.send(util.responseSuccess(res, '获取相册列表成功', albums));
+                    util.responseSuccess(res, '获取相册列表成功', albums);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取相册列表成功', []));
+            util.responseSuccess(res, '获取相册列表成功', []);
         }
     });
 });
@@ -57,7 +57,7 @@ photoRouter.get('/getByAlbumId', function(req, res) {
         }, '_id cover create_time photos name',
     function(err, album) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(album)){
             let album_id = album._id;
             Album.aggregate([
@@ -70,17 +70,17 @@ photoRouter.get('/getByAlbumId', function(req, res) {
                     }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     result.forEach(item => {
                         if(util.checkStringEqual(album._id, item._id))
                             album.photos = item.photos;
                     });
-                    res.send(util.responseSuccess(res, '获取相册成功', album));
+                    util.responseSuccess(res, '获取相册成功', album);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取相册成功', {}));
+            util.responseSuccess(res, '获取相册成功', {});
         }
     });
 });
@@ -90,13 +90,13 @@ photoRouter.get('/getByPhotoId', function(req, res) {
         { _id: req.query.album_id },
         function(err, album) {
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
                 let photo = album.photos.id(req.query.photo_id);
                 if (util.checkEmpty(photo))
-                    res.send(util.responseSuccess(res, '获取照片成功', {}));
+                    util.responseSuccess(res, '获取照片成功', {});
                 else
-                    res.send(util.responseSuccess(res, '获取照片成功', photo));
+                    util.responseSuccess(res, '获取照片成功', photo);
             }
         }
     );
@@ -105,7 +105,7 @@ photoRouter.get('/getByPhotoId', function(req, res) {
 photoRouter.post('/createAlbum', uploadAlbum.single('cover'), function(req, res) {
     let file = req.file;
     if(util.checkEmpty(file) || util.getImageExtName(file.mimetype) === '') {
-        res.send(util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误'));
+        util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误');
     } else {
         let extName = util.getImageExtName(file.mimetype);
         let album = new Album();
@@ -114,7 +114,7 @@ photoRouter.post('/createAlbum', uploadAlbum.single('cover'), function(req, res)
         album.save(function (err, result) {
             console.log(err);
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
                 let newPath = 'public/albums/' + result._id + '.' + extName;
                 fs.renameSync(file.path, newPath);
@@ -124,9 +124,9 @@ photoRouter.post('/createAlbum', uploadAlbum.single('cover'), function(req, res)
                     {new: true},
                     function (err, album) {
                         if (err)
-                            res.send(util.responseError(res));
+                            util.responseError(res);
                         else
-                            res.send(util.responseSuccess(res, '创建相册成功', album));
+                            util.responseSuccess(res, '创建相册成功', album);
                     }
                 );
             }
@@ -137,7 +137,7 @@ photoRouter.post('/createAlbum', uploadAlbum.single('cover'), function(req, res)
 photoRouter.post('/uploadPhoto', uploadPhoto.single('photo'), function(req, res) {
     let file = req.file;
     if(util.checkEmpty(file) || util.getImageExtName(file.mimetype) === '') {
-        res.send(util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误'));
+        util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误');
     } else {
         let extName = util.getImageExtName(file.mimetype);
         fs.renameSync(file.path, file.path + '.' + extName);
@@ -152,9 +152,9 @@ photoRouter.post('/uploadPhoto', uploadPhoto.single('photo'), function(req, res)
         function(err) {
             console.log(err);
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
-                res.send(util.responseSuccess(res, '照片上传成功'));
+                util.responseSuccess(res, '照片上传成功');
             }
         });
     }

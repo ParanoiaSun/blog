@@ -7,7 +7,7 @@ const util = require('../util');
 let Article = require('../models/articleModel');
 
 blogRouter.get('/', function(req, res) {
-    res.send(util.responseSuccess(res, '博文api测试成功！'));
+    util.responseSuccess(res, '博文api测试成功！');
 });
 
 blogRouter.get('/getByPage', function(req, res) {
@@ -16,7 +16,7 @@ blogRouter.get('/getByPage', function(req, res) {
         }, '_id create_time file_path tag category title summary', { sort: { create_time: -1 } },
     function(err, articles) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(articles)){
             let article_id = [];
             articles.forEach(a => article_id.push(a._id));
@@ -32,7 +32,7 @@ blogRouter.get('/getByPage', function(req, res) {
                     }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     articles.forEach(a => {
                         result.forEach(item => {
@@ -40,11 +40,11 @@ blogRouter.get('/getByPage', function(req, res) {
                                 a.comments = item.comments;
                         });
                     });
-                    res.send(util.responseSuccess(res, '获取博文列表成功', articles));
+                    util.responseSuccess(res, '获取博文列表成功', articles);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取博文列表成功', []));
+            util.responseSuccess(res, '获取博文列表成功', []);
         }
     });
 });
@@ -56,7 +56,7 @@ blogRouter.get('/getById', function(req, res) {
     }, '_id create_time file_path tag category title summary',
     function(err, article) {
         if(err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else if(!util.checkEmpty(article)){
             let article_id = article._id;
             Article.aggregate([
@@ -69,33 +69,33 @@ blogRouter.get('/getById', function(req, res) {
                     }}
             ]).exec((err, result) => {
                 if(err)
-                    res.send(util.responseError(res));
+                    util.responseError(res);
                 else {
                     result.forEach(item => {
                         if(util.checkStringEqual(article._id, item._id))
                             article.comments = item.comments;
                     });
-                    res.send(util.responseSuccess(res, '获取博文成功', article));
+                    util.responseSuccess(res, '获取博文成功', article);
                 }
             })
         } else {
-            res.send(util.responseSuccess(res, '获取博文成功', {}));
+            util.responseSuccess(res, '获取博文成功', {});
         }
     });
 });
 
 blogRouter.get('/getByCategory', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.get('/getByTag', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.post('/uploadBlog', upload.single('file'), function(req, res) {
     let file = req.file;
     if(util.checkEmpty(file) || file.mimetype !== 'text/markdown')
-        res.send(util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误'));
+        util.responseError(res, 403, util.businessErrorCode, '文件类型或内容错误');
     else {
         let article = new Article();
         article.title = req.body.title;
@@ -104,7 +104,7 @@ blogRouter.post('/uploadBlog', upload.single('file'), function(req, res) {
         article.save(function(err, result) {
             console.log(err);
             if (err)
-                res.send(util.responseError(res));
+                util.responseError(res);
             else {
                 let newPath = 'public/blogs/' + result._id + '.md';
                 fs.renameSync(file.path, newPath);
@@ -114,9 +114,9 @@ blogRouter.post('/uploadBlog', upload.single('file'), function(req, res) {
                     { new: true },
                     function(err, blog) {
                         if (err)
-                            res.send(util.responseError(res));
+                            util.responseError(res);
                         else
-                            res.send(util.responseSuccess(res, '博文发布成功', blog));
+                            util.responseSuccess(res, '博文发布成功', blog);
                     }
                 );
             }
@@ -137,34 +137,34 @@ blogRouter.post('/sendBlogComment', function(req, res) {
     { $addToSet: { comments: [comment] } },
     function(err) {
         if (err)
-            res.send(util.responseError(res));
+            util.responseError(res);
         else
-            res.send(util.responseSuccess(res, '博文回复发布成功'));
+            util.responseSuccess(res, '博文回复发布成功');
     });
 });
 
 blogRouter.get('/removeBlog', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.get('/recoverBlog', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.get('/removeComment', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.get('/recoverComment', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.post('/sendBlogCommentReply', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 blogRouter.post('/editBlogCommentReply', function(req, res) {
-    res.send(util.responseSuccess(res));
+    util.responseSuccess(res);
 });
 
 module.exports = blogRouter;

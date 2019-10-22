@@ -1,9 +1,6 @@
 import React from 'react';
 import './messages.css';
-
-function isEmpty(input) {
-    return input + '' === 'null' || input + '' === 'undefined' || input.trim ? input.trim() === '' : input.replace(/^\s+|\s+$/gm) === '';
-}
+import { isStringEmpty } from '../../../util/CommonUtil';
 
 class PCMessageDetail extends React.Component {
 
@@ -20,7 +17,7 @@ class PCMessageDetail extends React.Component {
     }
 
     handleSendReply() {
-        if(isEmpty(this.state.sendSubInputName) || isEmpty(this.state.sendSubInputContent)) {
+        if(isStringEmpty(this.state.sendSubInputName) || isStringEmpty(this.state.sendSubInputContent)) {
             console.log('请完善回复信息^_^');
         } else {
             this.setState({
