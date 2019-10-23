@@ -337,7 +337,7 @@
 
 ### 前端使用ID查询相册
 
-`/photo/getAlbumById`
+`/photo/getByAlbumId`
 
 请求方法：GET
 

@@ -10,14 +10,14 @@
     position: absolute;
     width: 30rem;
     height: 40rem;
-    background-color: #aaaaaa;
+    background-color: #fff;
     z-index: 1;
     opacity: 1;
     animation: appear 1s;
     -moz-animation: appear 1s;	/* Firefox 4 */
     -webkit-animation: appear 1s;	/* Safari 和 Chrome */
     -o-animation: appear 1s;	/* Opera */
-    background-image: url("https://wx2.sinaimg.cn/mw690/aaf15bbegy1g7hcgv70c9j22wk48y7wk.jpg");
+    background-image: url("http://127.0.0.1:8000/api/public/images/IMG_1061.jpg");
     background-size: cover;
 }
 

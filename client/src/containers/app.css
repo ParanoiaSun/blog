@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-/*.swal-modal {*/
-/*    width: 60rem;*/
-/*    height: 45rem;*/
-/*}*/
+.swal-modal {
+    width: 60rem;
+    height: 45rem;
+}
