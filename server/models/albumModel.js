@@ -21,7 +21,11 @@ const photoSchema = new Schema({
         required: true,
         type: Number,
         default: 0
-    }
+    },
+    img_type: {
+        type: String,
+        default: ''
+    },
 });
 
 const albumSchema = new Schema({
@@ -30,6 +34,10 @@ const albumSchema = new Schema({
         type: String
     },
     cover: {
+        type: String,
+        default: ''
+    },
+    cover_type: {
         type: String,
         default: ''
     },

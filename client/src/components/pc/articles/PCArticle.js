@@ -2,6 +2,7 @@ import React from 'react';
 import './article.css';
 
 import {Link} from 'react-router-dom';
+import { formISODateToStr } from "../../../util/CommonUtil";
 
 class PCArticle extends React.Component {
 
@@ -19,13 +20,13 @@ class PCArticle extends React.Component {
                 <div className="pc-article-split-line"/>
                 <div className="pc-article-summary">
                     <div className="pc-article-title">{ this.state.article.title }</div>
-                    <div className="pc-article-time">{ this.state.article.date }</div>
+                    <div className="pc-article-time">{ formISODateToStr(this.state.article.create_time) }</div>
                 </div>
                 <div className="pc-article-intro">
                     { this.state.article.summary }
                 </div>
                 <div className="pc-article-detail-button">
-                    <Link to={"/articles/content/" + this.state.article.id}> 阅读全文 </Link>
+                    <Link to={"/articles/content/" + this.state.article._id}> 阅读全文 </Link>
                 </div>
             </div>
         );

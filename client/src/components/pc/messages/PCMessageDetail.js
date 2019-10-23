@@ -2,7 +2,6 @@ import React from 'react';
 import './messages.css';
 import { isStringEmpty, formISODate } from '../../../util/CommonUtil';
 import { fetchPost } from "../../../util/HttpUtil";
-import swal from '@sweetalert/with-react';
 
 class PCMessageDetail extends React.Component {
 
@@ -31,10 +30,10 @@ class PCMessageDetail extends React.Component {
                 if(res.code === 1){
 
                     //等待时间，显示成功
-                    swal("发送成功!", {
-                        buttons: false,
-                        timer: 800,
-                    });
+                    // swal("发送成功!", {
+                    //     buttons: false,
+                    //     timer: 800,
+                    // });
 
                     this.setState({
                         // subMessage: [ ...this.state.subMessage, res.data],

@@ -14,7 +14,7 @@ photoRouter.get('/', function(req, res) {
 photoRouter.get('/getAlbumList', function(req, res) {
     Album.find({
             is_deleted: 0
-        }, '_id cover create_time photos name', { sort: { create_time: -1 } },
+        }, '_id cover create_time photos name cover_type', { sort: { create_time: -1 } },
     function(err, albums) {
         if(err)
             util.responseError(res);
@@ -54,7 +54,7 @@ photoRouter.get('/getByAlbumId', function(req, res) {
     Album.findOne({
             _id: req.query.album_id,
             is_deleted: 0
-        }, '_id cover create_time photos name',
+        }, '_id cover create_time photos name cover_type',
     function(err, album) {
         if(err)
             util.responseError(res);
@@ -111,6 +111,7 @@ photoRouter.post('/createAlbum', uploadAlbum.single('cover'), function(req, res)
         let album = new Album();
         album.name = req.body.name;
         album.create_time = util.getLocalDateTime();
+        album.cover_type = extName;
         album.save(function (err, result) {
             console.log(err);
             if (err)
@@ -144,7 +145,8 @@ photoRouter.post('/uploadPhoto', uploadPhoto.single('photo'), function(req, res)
         let photo = {
             description: req.body.description,
             create_time: util.getLocalDateTime(),
-            img: file.path + '.' + extName
+            img: file.path + '.' + extName,
+            img_type: extName
         };
         Album.updateOne(
         { _id: req.query.album_id },

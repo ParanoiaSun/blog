@@ -2,6 +2,36 @@ import { isObjNull, getStrValue } from "./CommonUtil";
 
 const serverUrl = 'http://127.0.0.1:8000/api';
 
+export function fetchFile(url, header, type) {
+
+    const request = fetch(serverUrl + url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+            'Accept': type,
+            'Content-Type': 'application/x-www-form-urlencoded',
+            ...header
+        })
+    });
+
+    return request.then(response => {
+        if (response.status >= 200 && response.status < 500) {
+            return response;
+        } else {
+            const error = new Error(response.statusText);
+            error.response = response;
+            throw error;
+        }
+    }).then((response => Promise.resolve(response)))
+    .catch(error => {
+        if (error.json) {
+            return error.json();
+        } else {
+            return error;
+        }
+    });
+}
+
 export function fetchPost(url, params, bodyParams, header) {
     if(isObjNull(header))
         header = {};

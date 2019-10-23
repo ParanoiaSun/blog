@@ -2,28 +2,29 @@ import React from 'react';
 import './article.css';
 import '../../iconfont.css';
 import './articleStyle.css';
-
 import ReactMarkdown from 'react-markdown';
 import { Link } from "react-router-dom";
+import { fetchFile } from "../../../util/HttpUtil";
 
 class PCArticleDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filePath: '文章内容加载中...'
+            filePath: props.match.params.id,
+            fileContent: '文章内容加载中...'
         }
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/mock/example.md')
-            .then((response) => response.text())
-            .then(
-                (data) => {
-                    this.setState({
-                        filePath: data
-                    })
-                }
-            );
+        fetchFile('/public/blogs/' + this.state.filePath + '.md', null, 'text/x-markdown')
+            .then( res => res.text() )
+            .then(data => {
+            this.setState({
+                fileContent: data
+            });
+        }, (fail) => {
+            // TODO 处理请求fail
+        });
     }
 
     render() {
@@ -34,7 +35,7 @@ class PCArticleDetail extends React.Component {
                     <span>返回文章列表</span>
                 </Link>
                 <div className="pc-article-detail-content">
-                    <ReactMarkdown source={this.state.filePath} />
+                    <ReactMarkdown source={this.state.fileContent} />
                 </div>
             </div>
         );

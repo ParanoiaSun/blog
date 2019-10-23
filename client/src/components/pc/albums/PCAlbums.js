@@ -42,6 +42,10 @@ class PCAlbums extends React.Component {
         };
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         return(
             <div className="pc-albums-wrapper">
