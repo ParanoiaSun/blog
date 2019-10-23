@@ -1,7 +1,8 @@
 import React from 'react';
 import './messages.css';
-import { isStringEmpty } from '../../../util/CommonUtil';
-import {fetchPost} from "../../../util/HttpUtil";
+import { isStringEmpty, formISODate } from '../../../util/CommonUtil';
+import { fetchPost } from "../../../util/HttpUtil";
+import swal from '@sweetalert/with-react';
 
 class PCMessageDetail extends React.Component {
 
@@ -28,11 +29,25 @@ class PCMessageDetail extends React.Component {
             bodyParams.set('content', this.state.sendSubInputContent);
             fetchPost('/message/addSubMessage', params, bodyParams, null).then((res) => {
                 if(res.code === 1){
+
+                    //等待时间，显示成功
+                    swal("发送成功!", {
+                        buttons: false,
+                        timer: 800,
+                    });
+
                     this.setState({
-                        messages: [ res.data, ...this.state.subMessage],
-                        total: this.state.total + 1
+                        // subMessage: [ ...this.state.subMessage, res.data],
+                        subMessage: res.data.sub_message,
+                        sendInputDisplay: false,
+                        sendSubInputName: '',
+                        sendSubInputContent: ''
+                    }, () => {
+                        console.log(this.state.subMessage);
                     });
                 }
+            }, (fail) => {
+                // TODO 处理请求fail
             });
         }
     }
@@ -63,7 +78,7 @@ class PCMessageDetail extends React.Component {
                         <span className="nampo-icon message-icon">&#xe6b3;</span> {this.state.message.name}
                     </div>
                     <div className="pc-message-detail-time">
-                        {this.state.message.send_time}
+                        {formISODate(this.state.message.send_time)}
                     </div>
                 </div>
                 <div className="pc-message-detail-content">
@@ -98,7 +113,7 @@ class PCMessageDetail extends React.Component {
                                         {item.name}
                                     </div>
                                     <div className="pc-message-detail-time">
-                                        {item.send_time}
+                                        {formISODate(item.send_time)}
                                     </div>
                                 </div>
                                 <div className="pc-message-detail-content">

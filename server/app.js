@@ -46,6 +46,8 @@ mongoose.connect('mongodb://localhost:27017/nampo', { useNewUrlParser: true, use
   });
 });
 
+mongoose.set('useFindAndModify', false);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

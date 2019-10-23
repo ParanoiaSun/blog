@@ -133,8 +133,9 @@ messageRouter.post('/addSubMessage', function(req, res) {
         function(err, message) {
             if (err)
                 util.responseError(res);
-            else
+            else {
                 util.responseSuccess(res, '留言回复发布成功', message);
+            }
     });
 });
 

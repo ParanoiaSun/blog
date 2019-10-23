@@ -1,7 +1,7 @@
 import React from 'react';
 import './albums.css';
 import {Link} from "react-router-dom";
-import swal from '@sweetalert/with-react'
+import swal from '@sweetalert/with-react';
 
 class PCAlbumContent extends React.Component {
     constructor(props) {
