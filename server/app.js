@@ -22,6 +22,15 @@ const port = 8000 || process.env.PORT;
 //   target:targetUrl
 // });
 
+app.use('/api',(req,res)=>{
+  proxy.web(req,res,{target:targetUrl})
+});
+
+const targetUrl = `http://127.0.0.1:${port}`;
+const proxy = httpProxy.createProxyServer({
+  target:targetUrl
+});
+
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -62,10 +71,10 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', connectHistoryApiFallback()); //处理前端路由
 
-app.use('/api', indexRouter);
-app.use('/api/blog', blogRouter);
-app.use('/api/message', messageRouter);
-app.use('/api/photo', photoRouter);
+app.use('/', indexRouter);
+app.use('/blog', blogRouter);
+app.use('/message', messageRouter);
+app.use('/photo', photoRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

@@ -6,6 +6,7 @@
     "@sweetalert/with-react": "^0.1.1",
     "antd": "^3.23.4",
     "clean-css": ">=4.1.11",
+    "eslint": "^6.5.1",
     "eslint-utils": ">=1.4.1",
     "jquery": "^3.4.1",
     "marked": "^0.7.0",
@@ -18,7 +19,8 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-syntax-highlighter": "^11.0.2",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,7 +46,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "css-loader": "^3.2.0",
+    "gh-pages": "^2.1.1",
+    "style-loader": "^1.0.0"
   },
   "homepage": "https://paranoiasun.github.io/blog/"
 }
