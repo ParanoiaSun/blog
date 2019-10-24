@@ -5,6 +5,7 @@ import './articleStyle.css';
 import ReactMarkdown from 'react-markdown';
 import { Link } from "react-router-dom";
 import { fetchFile } from "../../../util/HttpUtil";
+import CodeBlock from "../../CodeBlock";
 
 class PCArticleDetail extends React.Component {
     constructor(props) {
@@ -35,7 +36,10 @@ class PCArticleDetail extends React.Component {
                     <span>返回文章列表</span>
                 </Link>
                 <div className="pc-article-detail-content">
-                    <ReactMarkdown source={this.state.fileContent} />
+                    <ReactMarkdown source={this.state.fileContent} escapeHtml={false}
+                                   renderers={{
+                                       code: CodeBlock
+                                   }} />
                 </div>
             </div>
         );
