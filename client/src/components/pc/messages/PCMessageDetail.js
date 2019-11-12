@@ -29,12 +29,6 @@ class PCMessageDetail extends React.Component {
             fetchPost('/message/addSubMessage', params, bodyParams, null).then((res) => {
                 if(res.code === 1){
 
-                    //等待时间，显示成功
-                    // swal("发送成功!", {
-                    //     buttons: false,
-                    //     timer: 800,
-                    // });
-
                     this.setState({
                         // subMessage: [ ...this.state.subMessage, res.data],
                         subMessage: res.data.sub_message,

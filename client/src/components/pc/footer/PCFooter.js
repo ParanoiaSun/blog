@@ -15,7 +15,7 @@ class PCFooter extends React.Component{
                     <a href="https://weibo.com/2867944382" rel="noopener noreferrer nofollow" target="_blank">
                         <span className="weibo-link footer-link nampo-icon">&#xf01af;</span>
                     </a>
-                    <a href="https://weibo.com/2867944382" rel="noopener noreferrer nofollow" target="_blank">
+                    <a href="https://twitter.com/Paranoia_Sun" rel="noopener noreferrer nofollow" target="_blank">
                         <span className="twitter-link footer-link nampo-icon">&#xe6aa;</span>
                     </a>
 

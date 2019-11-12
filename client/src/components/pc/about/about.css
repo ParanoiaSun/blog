@@ -17,7 +17,7 @@
     -moz-animation: appear 1s;	/* Firefox 4 */
     -webkit-animation: appear 1s;	/* Safari 和 Chrome */
     -o-animation: appear 1s;	/* Opera */
-    background-image: url("http://127.0.0.1:8000/api/public/images/IMG_1061.jpg");
+    background-image: url("http://139.196.160.90:8000/api/public/images/IMG_1061.jpg");
     background-size: cover;
 }
 

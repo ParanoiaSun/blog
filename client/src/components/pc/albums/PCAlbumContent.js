@@ -38,7 +38,10 @@ class PCAlbumContent extends React.Component {
         swal({
             button: null,
             content: (
-                <div style={{ backgroundImage: 'url(' + serverUrl + '/' + data.img + ')' }} className="pc-album-photo-modal"/>
+                <div>
+                    <div style={{ backgroundImage: 'url(' + serverUrl + '/' + data.img + ')' }} className="pc-album-photo-modal"/>
+                    <p>{ data.description }</p>
+                </div>
             )
         })
     }

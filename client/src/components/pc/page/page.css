@@ -52,7 +52,8 @@
     min-height: 42rem;
     top: 3.5rem;
     right: 10rem;
-    background-image: url("https://img.zcool.cn/community/01256d5b2b6636a8012034f7304bde.jpg@1280w_1l_2o_100sh.jpg");
+    /*background-image: url("https://img.zcool.cn/community/01256d5b2b6636a8012034f7304bde.jpg@1280w_1l_2o_100sh.jpg");*/
+    background-image: url("http://139.196.160.90:8000/api/public/images/cae0ba07b7f325528685b16d405ed968.jpg");
     background-size: cover;
     background-color: #DDDDDD;
     z-index: -1;

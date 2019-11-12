@@ -3,7 +3,6 @@ import './messages.css';
 import PCMessageDetail from "./PCMessageDetail";
 import { isStringEmpty } from "../../../util/CommonUtil";
 import { fetchGet, fetchPost } from "../../../util/HttpUtil";
-import swal from "@sweetalert/with-react";
 
 class PCMessages extends React.Component {
 
@@ -40,11 +39,6 @@ class PCMessages extends React.Component {
             params.set('content', this.state.sendInputContent);
             fetchPost('/message/addMessage', null, params, null).then((res) => {
                 if(res.code === 1){
-
-                    swal("发送成功!", {
-                        buttons: false,
-                        timer: 800,
-                    });
 
                     this.setState({
                         messages: [ res.data, ...this.state.messages ],

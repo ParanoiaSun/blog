@@ -8,8 +8,10 @@
     "clean-css": ">=4.1.11",
     "eslint": "^6.5.1",
     "eslint-utils": ">=1.4.1",
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
     "marked": "^0.7.0",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -20,7 +22,8 @@
     "react-scripts": "3.1.1",
     "react-syntax-highlighter": "^11.0.2",
     "sweetalert": "^2.1.2",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "connect-history-api-fallback": "^1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +31,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "sonia": "node ./src/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,5 +54,5 @@
     "gh-pages": "^2.1.1",
     "style-loader": "^1.0.0"
   },
-  "homepage": "https://paranoiasun.github.io/blog/"
+  "homepage": "./"
 }

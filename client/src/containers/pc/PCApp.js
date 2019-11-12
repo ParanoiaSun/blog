@@ -2,7 +2,7 @@ import React from 'react';
 import '../app.css';
 
 import PCMenu from "../../components/pc/menu/PCMenu";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import MediaQuery from 'react-responsive';
 import MobileArticles from "../../components/mobile/articles/MobileArticles";
 import MobileAlbums from "../../components/mobile/albums/MobileAlbums";
@@ -37,6 +37,7 @@ class PCApp extends React.Component {
                 <div className="pc-content">
                     <MediaQuery query='(min-device-width: 1224px)'>
                         <Switch>
+                            <Redirect to="/homepage" from='/' exact />
                             <Route path="/homepage" component={PCHomepage}/>
                             <Route path="/*" component={PCDetailPage}/>
                         </Switch>
